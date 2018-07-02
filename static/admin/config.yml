@@ -3,7 +3,7 @@ backend:
   repo: mateuszk969/crypto # Path to your Github repository
   branch: master # Branch to update (master by default)
 
-media_folder: "source/img/uploads" # Folder where user uploaded files should go
+media_folder: "source " # Folder where user uploaded files should go
 public_folder: "source" # CMS now knows 'source' is the public folder and will strip this from the path
 
 publish_mode: editorial_workflow

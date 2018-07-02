@@ -2,7 +2,13 @@
   <section class="container">
     <div>
       <ul class="links">
-        <li :key="post.date" v-for="post in posts">{{post.date}}</li>
+        <li v-for="post in posts"
+            :key="post.date">
+            {{post.title}}
+            {{post.date}}
+            {{post.body}}
+            <img v-bind:src="post.thumbnail" /> 
+            </li>
       </ul>
     </div>
   </section>
@@ -13,7 +19,6 @@ export default {
   components: {
   },
   data() {
-    // Using webpacks context to gather all files from a folder
     const context = require.context('~/content/blog/posts/', false, /\.json$/);
     const posts = context.keys().map(key => ({
       ...context(key),
