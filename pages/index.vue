@@ -1,9 +1,23 @@
 <template>
   <section class="container">
     <div>
-      <ul class="links">
+      <h1>local posts</h1>
+      <ul class="local">
        <li v-for="post in posts"
-            :key="post.date">
+            :key="post.date"
+            v-if="post.type=='local'">
+            <nuxt-link :to='post.title'>
+              {{post.title}}
+               </nuxt-link>
+              {{post.date}}
+              <img v-bind:src="post.thumbnail" /> 
+            </li>
+      </ul>
+            <h1>world posts</h1>
+      <ul class="world">
+       <li v-for="post in posts"
+            :key="post.date"
+            v-if="post.type=='world'">
             <nuxt-link :to='post.title'>
               {{post.title}}
                </nuxt-link>
@@ -18,6 +32,7 @@
 <script>
 
 export default {
+  
   data() {
     const context = require.context('~/content/blog/posts/', false, /\.json$/);
     const posts = context.keys().map(key => ({
