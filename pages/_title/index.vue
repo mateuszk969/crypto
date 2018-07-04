@@ -18,7 +18,6 @@ export default {
     return {currentPost}
   },
     created() { 
-    let 
   }
 }
 </script>
