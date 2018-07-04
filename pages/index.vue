@@ -2,12 +2,13 @@
   <section class="container">
     <div>
       <ul class="links">
-        <li v-for="post in posts"
+       <li v-for="post in posts"
             :key="post.date">
-            {{post.title}}
-            {{post.date}}
-            {{post.body}}
-            <img v-bind:src="post.thumbnail" /> 
+            <nuxt-link :to='post.title'>
+              {{post.title}}
+               </nuxt-link>
+              {{post.date}}
+              <img v-bind:src="post.thumbnail" /> 
             </li>
       </ul>
     </div>
@@ -15,9 +16,8 @@
 </template>
 
 <script>
+
 export default {
-  components: {
-  },
   data() {
     const context = require.context('~/content/blog/posts/', false, /\.json$/);
     const posts = context.keys().map(key => ({
@@ -29,7 +29,14 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
+ .links{
+  width:100%
+}
+li img{
+  width:100px;
+  margin:0 auto
+}
 .container
 {
   min-height: 100vh;

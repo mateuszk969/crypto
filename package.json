@@ -11,6 +11,7 @@
     "generate": "nuxt generate"
   },
   "dependencies": {
+    "markdown": "^0.5.0",
     "nuxt": "^1.0.0"
   },
   "devDependencies": {

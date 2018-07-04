@@ -1,6 +1,6 @@
 <template>
    <div class="nav">
-       <img src="~/assets/image.png">
+       <img src="@/assets/logo.png">
        <ul>
            <li><nuxt-link to="/">Home</nuxt-link></li> 
            <li><nuxt-link to="/">Education</nuxt-link></li> 
@@ -13,3 +13,10 @@
        </ul>
    </div>
 </template>
+
+<script>
+
+export default{
+}
+
+</script>
