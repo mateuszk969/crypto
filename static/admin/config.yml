@@ -1,6 +1,6 @@
 backend:
   name: github
-  repo: https://github.com/mateuszk969/crypto
+  repo: mateuszk969/crypto
   branch: master # Branch to update (master by default)
 
 media_folder: "static/source" # Folder where user uploaded files should go
