@@ -1,49 +1,36 @@
 <template>
   <section class="container">
     <div>
-      <h1>local posts{{$store.state.posts}}</h1>
-      <ul class="local">
-       <li v-for="post in posts"
-            :key="post.date"
-            v-if="post.type=='local'">
-            <nuxt-link :to='post.title'>
-              {{post.title}}
-               </nuxt-link>
-              {{post.date}}
-              <img v-bind:src="post.thumbnail" /> 
-            </li>
-      </ul>
-            <h1>world posts</h1>
-      <ul class="world">
-       <li v-for="post in posts"
-            :key="post.date"
-            v-if="post.type=='world'">
-            <nuxt-link :to='post.title'>
-              {{post.title}}
-               </nuxt-link>
-              {{post.date}}
-              <img v-bind:src="post.thumbnail" /> 
-            </li>
-      </ul>
+      <posts :posts="localPosts"></posts>
+      <posts :posts="worldPosts"></posts>
     </div>
   </section>
 </template>
 
 <script>
 import { mapState } from 'vuex'
+import posts from '@/components/posts'
 
 export default {
-  
+  components: {
+    posts
+  },
 
-computed:{
-  posts(){
-      return this.$store.getters.loadedPosts
+  data() {
+    return{
+        localPosts:this.$store.getters.loadedPosts.filter(el=>{return el.type == 'local'}),
+        worldPosts:this.$store.getters.loadedPosts.filter(el=>{return el.type == 'world'})
+      }
   }
-}
-}
+  }
 </script>
 
 <style scoped>
+h2{
+  display:inline-block;
+  margin: 10px;
+}
+
  .links{
   width:100%
 }

@@ -11,6 +11,7 @@
     "generate": "nuxt generate"
   },
   "dependencies": {
+    "axios": "^0.18.0",
     "markdown": "^0.5.0",
     "nuxt": "^1.0.0",
     "vue-disqus": "^3.0.3",
