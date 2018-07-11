@@ -2,7 +2,9 @@
   <article>
     <img class="mainImage" :src="currentPost.thumbnail">
     <div class="body" v-html="currentBody"> </div>
+    <div class="disqus">
     <vue-disqus ref="disqus" v-bind:shortname="disqusShortname" :identifier="disqusId" :title="currentPost.title"></vue-disqus>
+    </div>
       </article>
 </template>
 
@@ -30,12 +32,18 @@ export default {
 
 <style scoped>
 .body{
+  margin: 0 auto;
+  width: 80%;
   padding:20px;
   text-align:center;
 }
 .mainImage{
   display:block;
   width:30%;
+  margin: 0 auto;
+}
+.disqus{
+  width:96%; 
   margin: 0 auto;
 }
 </style>
