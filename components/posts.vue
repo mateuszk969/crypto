@@ -11,7 +11,7 @@
                     <div class="postCont">
                         <nuxt-link :to='post.date + "_" + post.title'>
                             <img v-bind:src="post.thumbnail" />
-                            <p class="date">{{post.date.substring(0,10)}} | {{post.comment}} comments</p>
+                            <p class="date">{{post.date.substring(0,10)}} | {{post.comment || 0}} comments</p>
                             <p class="title">{{post.title}}</p>
                         </nuxt-link>
                    </div>
