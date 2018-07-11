@@ -28,6 +28,9 @@ const createStore = () => {
                 posts[i].comment = data.response[j].posts
               }
             }
+            if(posts[i].comment == undefined){
+              posts[i].comment = 0
+            }
           }
           await vuexContext.commit('setPosts', posts)
         },
