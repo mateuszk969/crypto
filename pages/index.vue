@@ -1,6 +1,7 @@
 <template>
   <section class="container">
     <div>
+      <vue-slider> </vue-slider>
       <posts :posts="localPosts"></posts>
       <posts :posts="worldPosts"></posts>
     </div>
@@ -13,7 +14,7 @@ import posts from '@/components/posts'
 
 export default {
   components: {
-    posts
+    posts,
   },
 
   data() {

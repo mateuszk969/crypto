@@ -20,3 +20,16 @@ export default{
 }
 
 </script>
+
+<style scoped>
+.nav{
+    display:flex;
+}
+.nav ul{
+    display:flex;
+    list-style:none;
+}
+.nav ul li{
+    margin:10px
+}
+</style>

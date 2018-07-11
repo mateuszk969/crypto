@@ -17,7 +17,6 @@ module.exports = {
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
     ]
   },
-
   /*
   ** Customize the progress-bar color
   */
@@ -27,6 +26,7 @@ module.exports = {
   ** Global CSS
   */
   css: [
+  'swiper/dist/css/swiper.css'
   ],
 
   /*
@@ -51,7 +51,9 @@ module.exports = {
     /*
     ** You can extend webpack config here
     */
+   
     vendor: ['axios'],
+    
     extend(config, ctx) {
       
     }
