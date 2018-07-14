@@ -17,6 +17,7 @@ export default {
 <style>
 html
 {
+  height:100%;
   font-family: "Source Sans Pro", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   font-size: 16px;
   word-spacing: 1px;
@@ -59,5 +60,11 @@ html
 {
   color: #fff;
   background-color: #35495e;
+}
+body{
+  height:100%;
+}
+#__nuxt{
+  height:100%;
 }
 </style>

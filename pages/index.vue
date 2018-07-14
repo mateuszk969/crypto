@@ -1,20 +1,27 @@
 <template>
-  <section class="container">
+<div>
+  <no-ssr>
+    <slider/>
+  </no-ssr>
+  <section class="container"> 
     <div>
-      <vue-slider> </vue-slider>
       <posts :posts="localPosts"></posts>
       <posts :posts="worldPosts"></posts>
     </div>
   </section>
+  </div>
 </template>
 
 <script>
 import { mapState } from 'vuex'
 import posts from '@/components/posts'
+import slider from '@/components/slider'
 
 export default {
+
   components: {
     posts,
+    slider
   },
 
   data() {
@@ -22,11 +29,12 @@ export default {
         localPosts:this.$store.getters.loadedPosts.filter(el=>{return el.type == 'local'}),
         worldPosts:this.$store.getters.loadedPosts.filter(el=>{return el.type == 'world'})
       }
+  },
   }
-  }
+  
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 h2{
   display:inline-block;
   margin: 10px;

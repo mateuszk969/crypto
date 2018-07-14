@@ -26,13 +26,13 @@ module.exports = {
   ** Global CSS
   */
   css: [
-  'swiper/dist/css/swiper.css'
   ],
 
   /*
   ** Plugins to load before mounting the App
   */
   plugins: [
+    { src: '~/plugins/vue-agile', ssr: false },
     '~/plugins/disqus'
   ]
   ,
