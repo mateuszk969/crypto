@@ -21,12 +21,6 @@
       return {
     slides: this.$store.getters.loadedPosts.splice(3),
     current: 0,
-    percent: 0,
-    timer: 0,
-    interval: 0,
-    progress: 0,
-    duration: 5000,
-    previous: 0,
     playslides: 0,
   }
     },
