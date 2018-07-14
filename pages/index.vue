@@ -24,11 +24,13 @@ export default {
     slider
   },
 
-  data() {
-    return{
-        localPosts:this.$store.getters.loadedPosts.filter(el=>{return el.type == 'local'}),
-        worldPosts:this.$store.getters.loadedPosts.filter(el=>{return el.type == 'world'})
-      }
+  computed: {
+        localPosts(){
+          return this.$store.getters.loadedPosts.filter(el=>{return el.type == 'local'})
+          },
+        worldPosts(){
+          this.$store.getters.loadedPosts.filter(el=>{return el.type == 'world'})
+        }
   },
   }
   
