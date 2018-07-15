@@ -9,7 +9,7 @@
             <li class="post" v-for="post in posts"
                 :key="post.date">
                     <div class="postCont">
-                        <nuxt-link :to='post.date + "_" + post.title'>
+                        <nuxt-link :to='post.date.substring(0,10) + "-" + post.title'>
                             <img v-bind:src="post.thumbnail" />
                             <p class="date">{{post.date.substring(0,10)}} | {{post.comment}} comments</p>
                             <p class="title">{{post.title}}</p>

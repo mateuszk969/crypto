@@ -19,7 +19,7 @@
   export default {
     data() {
       return {
-    slides: this.$store.getters.loadedPosts.splice(3),
+    slides: this.$store.getters.loadedPosts,
     current: 0,
     playslides: 0,
   }

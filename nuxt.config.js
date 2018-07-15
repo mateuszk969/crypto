@@ -1,4 +1,5 @@
-const pkg = require('./package')
+const pkg = require('./package');
+const fs = require('fs');
 
 module.exports = {
   mode: 'universal',
@@ -56,6 +57,16 @@ module.exports = {
     
     extend(config, ctx) {
       
+    }
+  },
+
+  generate: {
+    routes:function(){
+      const response = fs.readdirSync('content/blog/posts/');
+      const posts = response.map((el) => {
+     return el.substring(0,el.length-5)
+      });
+          return posts
     }
   }
 }

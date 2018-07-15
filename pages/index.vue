@@ -1,8 +1,6 @@
 <template>
 <div>
-  <no-ssr>
     <slider/>
-  </no-ssr>
   <section class="container"> 
     <div>
       <posts :posts="localPosts"></posts>
