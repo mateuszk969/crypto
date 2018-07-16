@@ -1,6 +1,6 @@
 <template>
   <article>
-    <img class="mainImage" :src="currentPost.thumbnail">
+    <img class="mainImage" :src="currentPost ? currentPost.thumbnail : ''">
     <div class="body" v-html="currentBody"> </div>
     <div class="disqus">
       <no-ssr>
@@ -19,12 +19,6 @@ export default {
     "no-ssr": NoSSR
   },
   computed: {
-    disqusId() {
-      return `${this.disqusShortname}-${this.currentPost.title}`;
-    },
-    disqusShortname() {
-      return "https-serene-davinci-42d559-netlify-com";
-    },
     currentPost() {
       return this.$store.getters.loadedPosts.find(
         el => el._path == this.$route.path
@@ -32,6 +26,12 @@ export default {
     },
     currentBody() {
       return markdown.toHTML(this.currentPost.body);
+    }
+  },
+  data(){
+    return{
+      disqusShortname:"https-serene-davinci-42d559-netlify-com",
+      disqusId:"`${this.disqusShortname}-${this.currentPost.title}`"
     }
   }
 };
