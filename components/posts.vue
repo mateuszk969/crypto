@@ -22,7 +22,7 @@
 </template>
 
 <script>
-
+export default {
   props: ["posts"],
   data(){
       return{
