@@ -59,15 +59,11 @@ module.exports = {
     }
   },
 
-  router:{
-    linkActiveClass: 'active-link'
-  },
-
   generate: {
     routes:function(){
       const response = fs.readdirSync('content/blog/posts/');
       const posts = response.map((el) => {
-     return el.substring(0,el.length-5)
+     return `blog/${el.substring(0,el.length-5)}`
       });
           return posts
     }

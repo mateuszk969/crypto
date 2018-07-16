@@ -142,7 +142,7 @@ export default {
   border-radius: 40px;
   font-weight: bold;
 }
-.active-link{
+.nuxt-link-exact-active{
   font-weight: bold;
 }
 @media screen and (min-width: 750px) {
