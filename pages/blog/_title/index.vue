@@ -1,55 +1,49 @@
 <template>
   <article>
-
+    <img class="mainImage" :src="currentPost.thumbnail">
+    <div class="body" v-html="currentBody"> </div>
     <div class="disqus">
-    <vue-disqus ref="disqus" v-bind:shortname="disqusShortname" :identifier="disqusId"></vue-disqus>
+    <vue-disqus ref="disqus" v-bind:shortname="disqusShortname" :identifier="disqusId" :title="currentPost.title"></vue-disqus>
     </div>
       </article>
 </template>
 
 <script>
-import { markdown } from "markdown";
+import {markdown} from 'markdown';
+
 
 export default {
-  computed: {
-    currentPost() {
-      return this.$store.getters.loadedPosts.find(
-        el => el._path == this.$route.path
-      );
-    },
-    currentBody() {
-      return markdown.toHTML(this.currentPost.body);
-    }
-  },
-  disqusId() {
-    return `${this.disqusShortname}-title`;
-  },
-  disqusShortname() {
-    return "https-serene-davinci-42d559-netlify-com";
-  },
-
-  watch: {
-    "$route.params.slug"(curr, old) {
-      this.$refs.disqus.init();
-    }
-  }
-};
+      computed: {
+        disqusId () { 
+        return `${this.disqusShortname}-${this.currentPost.title}`
+      },
+       disqusShortname () {
+        return 'https-serene-davinci-42d559-netlify-com'
+      },
+      currentPost(){
+        return this.$store.getters.loadedPosts.find(el => el._path == this.$route.path || el._path == this.$route.path.slice(0, -1))        
+      },
+      currentBody(){
+        return markdown.toHTML(this.currentPost.body)
+      }
+}
+}
 </script>
 
 <style scoped>
-.body {
+.body{
   margin: 0 auto;
   width: 80%;
-  padding: 20px;
-  text-align: center;
+  padding:20px;
+  text-align:center;
 }
-.mainImage {
-  display: block;
-  width: 30%;
+.mainImage{
+  display:block;
+  width:30%;
   margin: 0 auto;
 }
-.disqus {
-  width: 96%;
+.disqus{
+  width:96%; 
   margin: 0 auto;
 }
 </style>
