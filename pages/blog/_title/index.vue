@@ -22,7 +22,7 @@ export default {
     }
   },
   disqusId() {
-    return `${this.disqusShortname}-${this.currentPost.title}`;
+    return `${this.disqusShortname}-title`;
   },
   disqusShortname() {
     return "https-serene-davinci-42d559-netlify-com";
