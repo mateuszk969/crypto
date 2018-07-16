@@ -19,6 +19,12 @@ export default {
     "no-ssr": NoSSR
   },
   computed: {
+    disqusId() {
+      return `${this.disqusShortname}-${this.currentPost.title}`;
+    },
+    disqusShortname() {
+      return "https-serene-davinci-42d559-netlify-com";
+    },
     currentPost() {
       return this.$store.getters.loadedPosts.find(
         el => el._path == this.$route.path
@@ -28,12 +34,11 @@ export default {
       return markdown.toHTML(this.currentPost.body);
     }
   },
-  data(){
-    return{
-      disqusShortname:"https-serene-davinci-42d559-netlify-com",
-      disqusId:"`${this.disqusShortname}-${this.currentPost.title}`"
-    }
-  }
+   watch: {
+      '$route.params.slug' (curr, old) {
+        this.$refs.disqus.init()
+      }
+}
 };
 </script>
 
