@@ -1,30 +1,17 @@
 <template>
   <article>
-    <img class="mainImage" :src="currentPost ? currentPost.thumbnail : ''">
-    <div class="body" v-html="currentBody"> </div>
+
     <div class="disqus">
-      <no-ssr>
     <vue-disqus ref="disqus" v-bind:shortname="disqusShortname" :identifier="disqusId" :title="currentPost.title"></vue-disqus>
-    </no-ssr>
     </div>
       </article>
 </template>
 
 <script>
 import { markdown } from "markdown";
-import NoSSR from "vue-no-ssr";
 
 export default {
-  components: {
-    "no-ssr": NoSSR
-  },
   computed: {
-    disqusId() {
-      return `${this.disqusShortname}-${this.currentPost.title}`;
-    },
-    disqusShortname() {
-      return "https-serene-davinci-42d559-netlify-com";
-    },
     currentPost() {
       return this.$store.getters.loadedPosts.find(
         el => el._path == this.$route.path
@@ -34,11 +21,18 @@ export default {
       return markdown.toHTML(this.currentPost.body);
     }
   },
-   watch: {
-      '$route.params.slug' (curr, old) {
-        this.$refs.disqus.init()
-      }
-}
+  disqusId() {
+    return `${this.disqusShortname}-${this.currentPost.title}`;
+  },
+  disqusShortname() {
+    return "https-serene-davinci-42d559-netlify-com";
+  },
+
+  watch: {
+    "$route.params.slug"(curr, old) {
+      this.$refs.disqus.init();
+    }
+  }
 };
 </script>
 
