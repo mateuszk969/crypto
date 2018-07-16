@@ -60,6 +60,10 @@ module.exports = {
     }
   },
 
+  router:{
+    linkActiveClass: 'active-link'
+  },
+
   generate: {
     routes:function(){
       const response = fs.readdirSync('content/blog/posts/');

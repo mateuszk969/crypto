@@ -2,14 +2,14 @@
     <div>
         <div class="head">
             <h2>{{posts[0].type}} posts</h2> 
-            <span v-on:click="sortedByDate">Newest </span>
-            <span v-on:click="sortedByPopular">Popular</span>
+            <button v-on:click="sortedByDate">Newest </button>
+            <button v-on:click="sortedByPopular">Popular</button>
         </div>
         <ul class="posts" v-bind:class="{scroll:scroll}">
             <li class="post" v-for="post in posts"
                 :key="post.date">
                     <div class="postCont">
-                        <nuxt-link :to='post.date.substring(0,10) + "-" + post.title'>
+                        <nuxt-link :to="post._path">
                             <img v-bind:src="post.thumbnail" />
                             <p class="date">{{post.date.substring(0,10)}} | {{post.comment}} comments</p>
                             <p class="title">{{post.title}}</p>

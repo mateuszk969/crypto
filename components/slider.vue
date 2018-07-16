@@ -19,7 +19,7 @@
   export default {
     data() {
       return {
-    slides: this.$store.getters.loadedPosts,
+    slides: JSON.parse(JSON.stringify(this.$store.getters.loadedPosts)).slice(3) ,
     current: 0,
     playslides: 0,
   }

@@ -21,7 +21,7 @@ export default {
         return 'https-serene-davinci-42d559-netlify-com'
       },
       currentPost(){
-        return this.$store.getters.loadedPosts.find(el => el.date.substring(0,10) +"-"+el.title == this.$route.params.title)        
+        return this.$store.getters.loadedPosts.find(el => el._path == this.$route.path)        
       },
       currentBody(){
         return markdown.toHTML(this.currentPost.body)

@@ -19,7 +19,7 @@ const createStore = () => {
           const response = await require.context('~/content/blog/posts/', false, /\.json$/);
           const posts = await response.keys().map(key => ({
             ...response(key),
-            _path: `/blog/${key.replace('.json', '').replace('./', '')}`
+            _path: `/blog/${encodeURI(key.slice(2,key.length-5))}`
           }));
           let {data} = await axios.get('https://disqus.com/api/3.0/threads/list.json?api_secret=N2oxM8qbnxzBjbx9NCbaa4MJgbLiVKyXpVrNKDJjvURaRMdpJ0u59o2pRVLTzGFz&forum=https-serene-davinci-42d559-netlify-com');
           for (let i=0; i<posts.length; i++){
