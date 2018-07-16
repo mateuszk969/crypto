@@ -22,12 +22,7 @@
 </template>
 
 <script>
- import NoSSR from 'vue-no-ssr'
 
-export default {
-  components: {
-      'no-ssr': NoSSR
-    },
   props: ["posts"],
   data(){
       return{

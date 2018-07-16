@@ -11,41 +11,46 @@
 </template>
 
 <script>
-import {markdown} from 'markdown';
-
+import { markdown } from "markdown";
+import NoSSR from "vue-no-ssr";
 
 export default {
-      computed: {
-        disqusId () { 
-        return `${this.disqusShortname}-${this.currentPost.title}`
-      },
-       disqusShortname () {
-        return 'https-serene-davinci-42d559-netlify-com'
-      },
-      currentPost(){
-        return this.$store.getters.loadedPosts.find(el => el._path == this.$route.path)        
-      },
-      currentBody(){
-        return markdown.toHTML(this.currentPost.body)
-      }
-}
-}
+  components: {
+    "no-ssr": NoSSR
+  },
+  computed: {
+    disqusId() {
+      return `${this.disqusShortname}-${this.currentPost.title}`;
+    },
+    disqusShortname() {
+      return "https-serene-davinci-42d559-netlify-com";
+    },
+    currentPost() {
+      return this.$store.getters.loadedPosts.find(
+        el => el._path == this.$route.path
+      );
+    },
+    currentBody() {
+      return markdown.toHTML(this.currentPost.body);
+    }
+  }
+};
 </script>
 
 <style scoped>
-.body{
+.body {
   margin: 0 auto;
   width: 80%;
-  padding:20px;
-  text-align:center;
+  padding: 20px;
+  text-align: center;
 }
-.mainImage{
-  display:block;
-  width:30%;
+.mainImage {
+  display: block;
+  width: 30%;
   margin: 0 auto;
 }
-.disqus{
-  width:96%; 
+.disqus {
+  width: 96%;
   margin: 0 auto;
 }
 </style>
