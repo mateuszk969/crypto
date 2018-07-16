@@ -3,7 +3,9 @@
     <img class="mainImage" :src="currentPost.thumbnail">
     <div class="body" v-html="currentBody"> </div>
     <div class="disqus">
+      <no-ssr>
     <vue-disqus ref="disqus" v-bind:shortname="disqusShortname" :identifier="disqusId" :title="currentPost.title"></vue-disqus>
+    </no-ssr>
     </div>
       </article>
 </template>
