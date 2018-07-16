@@ -2,7 +2,7 @@
   <article>
 
     <div class="disqus">
-    <vue-disqus ref="disqus" v-bind:shortname="disqusShortname" :identifier="disqusId" :title="currentPost.title"></vue-disqus>
+    <vue-disqus ref="disqus" v-bind:shortname="disqusShortname" :identifier="disqusId"></vue-disqus>
     </div>
       </article>
 </template>
