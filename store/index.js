@@ -20,7 +20,10 @@ const createStore = () => {
           const posts = await response.keys().map(key => ({
             ...response(key),
             _path: `/blog/${encodeURI(key.slice(2,key.length-5))}`
-          }));
+          })).sort((a,b)=>{
+            return a.date < b.date;
+          })
+          ;
           let {data} = await axios.get('https://disqus.com/api/3.0/threads/list.json?api_secret=N2oxM8qbnxzBjbx9NCbaa4MJgbLiVKyXpVrNKDJjvURaRMdpJ0u59o2pRVLTzGFz&forum=https-serene-davinci-42d559-netlify-com');
           for (let i=0; i<posts.length; i++){
             for (let j = 0; j<data.response.length; j++){

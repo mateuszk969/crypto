@@ -3,17 +3,17 @@
     <ul class="slides">
 			<div id="test" class="mainPost" :style="{backgroundImage: `url(${playslides.thumbnail})`}">
 									  <div class="postCont">
-						            <p class="date">{{playslides.date.substring(0,10)}} | {{playslides.comment}} comments</p>
+						            <p class="mainDate">{{playslides.date.substring(0,10)}} | {{playslides.comment}} comments</p>
                         <nuxt-link :to="playslides._path">
-                            <p class="title">{{playslides.title}}</p>
+                            <p class="mainTitle">{{playslides.title}}</p>
                         </nuxt-link>
                    </div>
 						</div>
 			<div id="test2" class="mainPost" :style="{backgroundImage: `url(${previous.thumbnail})`}">
 									  <div class="postCont">
-						            <p class="date">{{previous.date.substring(0,10)}} | {{previous.comment}} comments</p>
+						            <p class="mainDate">{{previous.date.substring(0,10)}} | {{previous.comment}} comments</p>
                         <nuxt-link :to="previous._path">
-                            <p class="title">{{previous.title}}</p>
+                            <p class="mainTitle">{{previous.title}}</p>
                         </nuxt-link>
                    </div>
 						</div>
@@ -114,30 +114,35 @@ export default {
   background-size: cover;
   background-position: 50% 50%;
   width: 100%;
-  height: 15vh;
+  height: 17.5vh;
   display: flex;
   justify-content: center;
   align-items: flex-end;
 }
 .item .title {
-  padding: 20px;
-  font-size: 19px;
+  margin: 15px;
+  font-size: 13px;
+  font-weight: bold;
   color: white;
   text-align: center;
+  background-color: rgba(0,0,0,0.5);
 }
 .postCont {
   display: flex;
   flex-direction: column;
   justify-content: center;
 }
-.postCont .title {
-  font-size: 20px;
+.mainTitle {
+  font-size: 25px;
+  padding:10px 20px 10px 20px;;
   color: white;
   text-align: center;
 }
-.postCont .date {
-  font-size: 16px;
+.mainDate {
+  font-size: 18px;
+  font-weight:bold;
   color: #cecdd1;
+  text-align: center;
 }
 .postCont a,
 .item a {
