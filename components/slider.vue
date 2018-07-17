@@ -1,14 +1,22 @@
 <template>
 <div class="slider">
     <ul class="slides">
-        <div id="test" class="mainPost" :style="{backgroundImage: `url(${playslides.thumbnail ? playslides.thumbnail : slides[0].thumbnail})`}">
-					 <div class="postCont">
+			<div id="test" class="mainPost" :style="{backgroundImage: `url(${playslides.thumbnail})`}">
+									  <div class="postCont">
 						            <p class="date">{{playslides.date.substring(0,10)}} | {{playslides.comment}} comments</p>
                         <nuxt-link :to="playslides._path">
                             <p class="title">{{playslides.title}}</p>
                         </nuxt-link>
                    </div>
-				</div>
+						</div>
+			<div id="test2" class="mainPost" :style="{backgroundImage: `url(${previous.thumbnail})`}">
+									  <div class="postCont">
+						            <p class="date">{{previous.date.substring(0,10)}} | {{previous.comment}} comments</p>
+                        <nuxt-link :to="previous._path">
+                            <p class="title">{{previous.title}}</p>
+                        </nuxt-link>
+                   </div>
+						</div>
     </ul>
     <ul class="indicators">
       <li v-for="(slide,i) in slides" :key="i" @click="selectSlide(i)">
@@ -31,27 +39,33 @@ export default {
       slides: JSON.parse(
         JSON.stringify(this.$store.getters.loadedPosts)
       ).splice(1, 2),
-      current: 0,
-      playslides: JSON.parse(JSON.stringify(this.$store.getters.loadedPosts[0]))
+			current: 0,
+			previous: JSON.parse(JSON.stringify(this.$store.getters.loadedPosts[0])),
+			playslides: JSON.parse(JSON.stringify(this.$store.getters.loadedPosts[0])),
+			timeout:10000,
     };
   },
   computed: {},
   methods: {
-    selectSlide() {
-      this.slides.push(this.playslides);
-      this.playslides = this.slides[this.current];
-      this.slides.splice(this.current, 1);
+   selectSlide() {
+			this.previous =	this.playslides
+			this.slides.push(this.playslides);
+      this.playslides = this.slides[0];
+			this.slides.splice(0, 1);
       this.current++;
       if (this.current > this.slides.length) {
-        this.current = 0;
+				this.current = 0;
       }
     }
   },
   mounted() {
-		setInterval(this.selectSlide, 10000);
-  setTimeout(function() {
-    document.getElementById('test').className += ' slideInDown';
-  }, 10000);
+		setInterval(this.selectSlide, this.timeout);
+ setTimeout(function() {
+    document.getElementById('test').className += ' slideFromTop';
+	}, this.timeout); 
+	setTimeout(function() {
+    document.getElementById('test2').className += ' slideInDown';
+  }, this.timeout);
   }
 };
 </script>
@@ -61,12 +75,12 @@ export default {
   position: relative;
   z-index: 1;
   overflow: hidden;
-  height: 60vh;
+  height: 50vh;
 }
 .slider ul {
   list-style: none;
 }
-.slider .slides {
+.slides {
   position: absolute;
   width: 100%;
   height: 100%;
@@ -77,15 +91,15 @@ export default {
 .slider .slides li {
   height: 100%;
 }
-.slider .slides .mainPost {
+.mainPost {
   width: 100%;
-  height: 40vh;
+  height: 35vh;
   background-size: cover;
   background-position: 50% 50%;
   display: flex;
   justify-content: center;
 }
-.slider .indicators {
+.indicators {
   padding: 0;
   display: flex;
   flex-direction: row;
@@ -100,14 +114,14 @@ export default {
   background-size: cover;
   background-position: 50% 50%;
   width: 100%;
-  height: 20vh;
+  height: 15vh;
   display: flex;
   justify-content: center;
   align-items: flex-end;
 }
 .item .title {
   padding: 20px;
-  font-size: 25px;
+  font-size: 19px;
   color: white;
   text-align: center;
 }
@@ -132,18 +146,49 @@ export default {
 
 @-webkit-keyframes slideInDown {
   0% {
-    -webkit-transform: translate3d(0, -100%, 0);
-    transform: translate3d(0, -100%, 0);
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
     visibility: visible;
   }
 
   15% {
-    -webkit-transform: translate3d(0, 0, 0);
-    transform: translate3d(0, 0, 0);
+    -webkit-transform: translate3d(0, 100%, 0);
+    transform: translate3d(0, 100%, 0);
   }
 }
 
 @keyframes slideInDown {
+  0% {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+    visibility: visible;
+  }
+
+  15% {
+    -webkit-transform: translate3d(0, 100%, 0);
+    transform: translate3d(0, 100%, 0);
+  }
+	100%{
+		-webkit-transform: translate3d(0, 100%, 0);
+    transform: translate3d(0, 100%, 0);
+	}
+}
+
+.slideInDown {
+	-webkit-animation: slideInDown 10s infinite;
+  animation: slideInDown 10s infinite;
+}
+
+#test2{
+	background-size: cover;
+    width: 100%;
+    background-position: 50% 50%;
+    position: absolute;
+		top: 0;
+    z-index: -1;
+}
+
+@-webkit-keyframes slideFromTop {
   0% {
     -webkit-transform: translate3d(0, -100%, 0);
     transform: translate3d(0, -100%, 0);
@@ -156,8 +201,38 @@ export default {
   }
 }
 
-.slideInDown {
-	-webkit-animation: slideInDown 10s infinite;
-  animation: slideInDown 10s infinite;
+@keyframes slideFromTop {
+  0% {
+    -webkit-transform: translate3d(0, -100%, 0);
+    transform: translate3d(0, -100%, 0);
+    visibility: visible;
+  }
+
+  15% {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+  }
+	  100% {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+.slideFromTop{
+	-webkit-animation: slideFromTop 10s infinite;
+  animation: slideFromTop 10s infinite;
+}
+
+@media screen and(min-width:750px){
+  .mainPost{
+    height:50vh;
+  }
+  .indicators li {
+   padding:0 15px 20px 10px;
+}
+.postCont{
+  position:absolute;
+  top:15vh;
+}
 }
 </style>
