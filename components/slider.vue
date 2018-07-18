@@ -44,18 +44,18 @@
 export default {
   data() {
     return {
-      slides: JSON.parse(
-        JSON.stringify(this.$store.getters.loadedPosts)
-      ).splice(1, 3),
       current: 0,
-      previous: JSON.parse(JSON.stringify(this.$store.getters.loadedPosts[0])),
-      playslides: JSON.parse(
-        JSON.stringify(this.$store.getters.loadedPosts[0])
-      ),
-      timeout: 10000
+      previous: {...this.$store.getters.loadedPosts[0]},
+      playslides: {...this.$store.getters.loadedPosts[0]},
+      timeout: 10000,
+      width:0,
     };
   },
-  computed: {},
+  computed: {
+    slides(){
+     return (this.$mq == "sm" || this.$mq == "md" ? this.$store.getters.loadedPosts.slice(1, 3) : this.$store.getters.loadedPosts.slice(1, 4));
+    }
+  },
   methods: {
     selectSlide() {
       this.previous = this.playslides;
@@ -74,7 +74,7 @@ export default {
       document.getElementById("current").className += " slideFromTop";
       document.getElementById("prev").className += " slideInDown";
     }, this.timeout);
-  }
+  },
 };
 </script>
 
@@ -112,7 +112,7 @@ export default {
   flex-basis: 50%;
   position: absolute;
   bottom: 0;
-  width: 150%;
+  width: 100%;
   overflow-x: scroll;
 }
 .indicators li {
@@ -278,7 +278,7 @@ export default {
   }
   .postCont {
     position: absolute;
-    top: 15vh;
+    top: 12.5vh;
   }
   .yellowBar {
     width: 15vw;

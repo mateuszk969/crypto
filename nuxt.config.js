@@ -42,6 +42,13 @@ module.exports = {
   ** Nuxt.js modules
   */
   modules: [
+    ['nuxt-mq', {
+      breakpoints: {
+        sm: 769,
+        md: 1250,
+        lg: Infinity,
+      }
+    }],
     "nuxt-netlify-cms"
   ],
 
@@ -49,10 +56,7 @@ module.exports = {
   ** Build configuration
   */
   build: {
-    /*
-    ** You can extend webpack config here
-    */
-   
+
     vendor: ['axios'],
     
     extend(config, ctx) {
