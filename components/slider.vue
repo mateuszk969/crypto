@@ -1,29 +1,38 @@
 <template>
 <div class="slider">
     <ul class="slides">
-			<div id="test" class="mainPost" :style="{backgroundImage: `url(${playslides.thumbnail})`}">
+			<div id="current" class="mainPost" :style="{backgroundImage: `url(${playslides.thumbnail})`}">
+        <div class="gradient">
 									  <div class="postCont">
 						            <p class="mainDate">{{playslides.date.substring(0,10)}} | {{playslides.comment}} comments</p>
                         <nuxt-link :to="playslides._path">
                             <p class="mainTitle">{{playslides.title}}</p>
                         </nuxt-link>
+                         <div class="yellowBar"></div>
+                   </div>
                    </div>
 						</div>
-			<div id="test2" class="mainPost" :style="{backgroundImage: `url(${previous.thumbnail})`}">
+			<div id="prev" class="mainPost" :style="{backgroundImage: `url(${previous.thumbnail})`}">
+        <div class="gradient">
 									  <div class="postCont">
 						            <p class="mainDate">{{previous.date.substring(0,10)}} | {{previous.comment}} comments</p>
                         <nuxt-link :to="previous._path">
                             <p class="mainTitle">{{previous.title}}</p>
                         </nuxt-link>
+                        <div class="yellowBar"></div>
+                   </div>
                    </div>
 						</div>
     </ul>
     <ul class="indicators">
-      <li v-for="(slide,i) in slides" :key="i" @click="selectSlide(i)">
+      <li v-for="(slide,i) in slides" :key="i">
         <div class="item" :style="{backgroundImage: `url(${slide.thumbnail})`}">
+          <div class="smallGradient">
 					<nuxt-link :to="slide._path">
+            <p class="date">{{slide.date.substring(0,10)}} | {{slide.comment}} comments</p>
           <p class="title">{{slide.title}}</p>
 					 </nuxt-link>
+        </div>
         </div>
       </li>
     </ul>
@@ -32,40 +41,39 @@
 
 
 <script>
-
 export default {
   data() {
     return {
       slides: JSON.parse(
         JSON.stringify(this.$store.getters.loadedPosts)
-      ).splice(1, 2),
-			current: 0,
-			previous: JSON.parse(JSON.stringify(this.$store.getters.loadedPosts[0])),
-			playslides: JSON.parse(JSON.stringify(this.$store.getters.loadedPosts[0])),
-			timeout:10000,
+      ).splice(1, 3),
+      current: 0,
+      previous: JSON.parse(JSON.stringify(this.$store.getters.loadedPosts[0])),
+      playslides: JSON.parse(
+        JSON.stringify(this.$store.getters.loadedPosts[0])
+      ),
+      timeout: 10000
     };
   },
   computed: {},
   methods: {
-   selectSlide() {
-			this.previous =	this.playslides
-			this.slides.push(this.playslides);
+    selectSlide() {
+      this.previous = this.playslides;
+      this.slides.push(this.playslides);
       this.playslides = this.slides[0];
-			this.slides.splice(0, 1);
+      this.slides.splice(0, 1);
       this.current++;
       if (this.current > this.slides.length) {
-				this.current = 0;
+        this.current = 0;
       }
     }
   },
   mounted() {
-		setInterval(this.selectSlide, this.timeout);
- setTimeout(function() {
-    document.getElementById('test').className += ' slideFromTop';
-	}, this.timeout); 
-	setTimeout(function() {
-    document.getElementById('test2').className += ' slideInDown';
-  }, this.timeout);
+    setInterval(this.selectSlide, this.timeout);
+    setTimeout(function() {
+      document.getElementById("current").className += " slideFromTop";
+      document.getElementById("prev").className += " slideInDown";
+    }, this.timeout);
   }
 };
 </script>
@@ -96,16 +104,16 @@ export default {
   height: 35vh;
   background-size: cover;
   background-position: 50% 50%;
-  display: flex;
-  justify-content: center;
 }
 .indicators {
   padding: 0;
   display: flex;
   flex-direction: row;
+  flex-basis: 50%;
   position: absolute;
   bottom: 0;
-  width: 100%;
+  width: 150%;
+  overflow-x: scroll;
 }
 .indicators li {
   flex-basis: 50%;
@@ -125,7 +133,6 @@ export default {
   font-weight: bold;
   color: white;
   text-align: center;
-  background-color: rgba(0,0,0,0.5);
 }
 .postCont {
   display: flex;
@@ -133,20 +140,54 @@ export default {
   justify-content: center;
 }
 .mainTitle {
-  font-size: 25px;
-  padding:10px 20px 10px 20px;;
+  font-size: 22px;
+  padding: 10px 20px 10px 20px;
   color: white;
+  font-weight: bold;
   text-align: center;
 }
 .mainDate {
-  font-size: 18px;
-  font-weight:bold;
+  font-size: 16px;
+  font-weight: bold;
   color: #cecdd1;
   text-align: center;
+}
+.gradient {
+  width: 100%;
+  height: 100%;
+  background-image: linear-gradient(
+    180deg,
+    rgba(36, 38, 54, 0) 0%,
+    #232535 100%
+  );
+  display: flex;
+  justify-content: center;
+}
+.smallGradient {
+  width: 100%;
+  height: 100%;
+  background-image: linear-gradient(
+    180deg,
+    rgba(36, 38, 54, 0) 0%,
+    #232535 100%
+  );
+  display: flex;
+  flex-direction: column-reverse;
 }
 .postCont a,
 .item a {
   text-decoration: none;
+}
+.item .date {
+  display: none;
+}
+
+.yellowBar {
+  height: 6px;
+  border-radius: 17px;
+  background-color: #ffff1f;
+  width: 30vw;
+  margin: 20px auto 20px auto;
 }
 
 @-webkit-keyframes slideInDown {
@@ -173,24 +214,24 @@ export default {
     -webkit-transform: translate3d(0, 100%, 0);
     transform: translate3d(0, 100%, 0);
   }
-	100%{
-		-webkit-transform: translate3d(0, 100%, 0);
+  100% {
+    -webkit-transform: translate3d(0, 100%, 0);
     transform: translate3d(0, 100%, 0);
-	}
+  }
 }
 
 .slideInDown {
-	-webkit-animation: slideInDown 10s infinite;
+  -webkit-animation: slideInDown 10s infinite;
   animation: slideInDown 10s infinite;
 }
 
-#test2{
-	background-size: cover;
-    width: 100%;
-    background-position: 50% 50%;
-    position: absolute;
-		top: 0;
-    z-index: -1;
+#prev {
+  background-size: cover;
+  width: 100%;
+  background-position: 50% 50%;
+  position: absolute;
+  top: 0;
+  z-index: -1;
 }
 
 @-webkit-keyframes slideFromTop {
@@ -217,27 +258,53 @@ export default {
     -webkit-transform: translate3d(0, 0, 0);
     transform: translate3d(0, 0, 0);
   }
-	  100% {
+  100% {
     -webkit-transform: translate3d(0, 0, 0);
     transform: translate3d(0, 0, 0);
   }
 }
 
-.slideFromTop{
-	-webkit-animation: slideFromTop 10s infinite;
+.slideFromTop {
+  -webkit-animation: slideFromTop 10s infinite;
   animation: slideFromTop 10s infinite;
 }
 
-@media screen and(min-width:750px){
-  .mainPost{
-    height:50vh;
+@media screen and(min-width:750px) {
+  .mainPost {
+    height: 50vh;
   }
   .indicators li {
-   padding:0 15px 20px 10px;
-}
-.postCont{
-  position:absolute;
-  top:15vh;
-}
+    padding: 0 15px 20px 10px;
+  }
+  .postCont {
+    position: absolute;
+    top: 15vh;
+  }
+  .yellowBar {
+    width: 15vw;
+  }
+  .mainDate {
+    font-size: 19px;
+  }
+  .mainTitle {
+    font-size: 25px;
+    padding: 10px 30px 10px 30px;
+  }
+  .item .title {
+    font-size: 16px;
+    text-align: left;
+  }
+  .smallGradient {
+    justify-content: center;
+    background-image: linear-gradient(270deg, rgba(36,38,54,0) 0%, #232535 100%);
+  }
+  .item .date{
+    display:block;
+     font-size: 14px;
+  font-weight: bold;
+  color: #cecdd1;
+  text-align: left;
+  margin:15px 0px 0 15px;
+  }
 }
 </style>
