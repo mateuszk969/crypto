@@ -1,29 +1,29 @@
 <template>
 <div class="slider">
     <ul class="slides">
-			<div id="current" class="mainPost" :style="{backgroundImage: `url(${playslides.thumbnail})`}">
+			<div id="current" class="mainPost slideFromTop" :style="{backgroundImage: `url(${playslides.thumbnail})`}">
         <div class="gradient">
 									  <div class="postCont">
 						            <p class="mainDate">{{playslides.date.substring(0,10)}} | {{playslides.comment}} comments</p>
                         <nuxt-link :to="playslides._path">
                             <p class="mainTitle">{{playslides.title}}</p>
                         </nuxt-link>
-                         <div class="yellowBar"></div>
+                         <div id="bar" class="yellowBar timer"></div>
                    </div>
                    </div>
 						</div>
-			<div id="prev" class="mainPost" :style="{backgroundImage: `url(${previous.thumbnail})`}">
+			<div id="prev" class="mainPost slideInDown" :style="{backgroundImage: `url(${previous.thumbnail})`}">
         <div class="gradient">
 									  <div class="postCont">
 						            <p class="mainDate">{{previous.date.substring(0,10)}} | {{previous.comment}} comments</p>
                         <nuxt-link :to="previous._path">
                             <p class="mainTitle">{{previous.title}}</p>
                         </nuxt-link>
-                        <div class="yellowBar"></div>
                    </div>
                    </div>
 						</div>
     </ul>
+    <div class="container">
     <ul class="indicators">
       <li v-for="(slide,i) in slides" :key="i">
         <div class="item" :style="{backgroundImage: `url(${slide.thumbnail})`}">
@@ -36,6 +36,7 @@
         </div>
       </li>
     </ul>
+    </div>
   </div>
 </template>
 
@@ -45,23 +46,35 @@ export default {
   data() {
     return {
       current: 0,
-      previous: {...this.$store.getters.loadedPosts[0]},
-      playslides: {...this.$store.getters.loadedPosts[0]},
+      slides: [...this.$store.getters.loadedPosts.slice(1, 3)],
+      previous: { ...this.$store.getters.loadedPosts[0] },
+      playslides: { ...this.$store.getters.loadedPosts[0] },
       timeout: 10000,
-      width:0,
+      width: 0,
+      added: 0
     };
   },
-  computed: {
-    slides(){
-     return (this.$mq == "sm" || this.$mq == "md" ? this.$store.getters.loadedPosts.slice(1, 3) : this.$store.getters.loadedPosts.slice(1, 4));
+  watch: {
+    $mq() {
+      if ((this.$mq == "lg") & (this.slides.length == 2)) {
+        this.added == 0
+          ? this.slides.push(this.$store.getters.loadedPosts[3])
+          : this.slides.push(this.added);
+      }
+      if ((this.$mq == "md" || this.$mq == "sm") & (this.slides.length == 3)) {
+        this.added = this.slides.pop();
+      }
     }
   },
+
   methods: {
+    selectPrev() {
+      this.previous = this.playslides;
+    },
     selectSlide() {
       this.previous = this.playslides;
       this.slides.push(this.playslides);
-      this.playslides = this.slides[0];
-      this.slides.splice(0, 1);
+      this.playslides = this.slides.shift();
       this.current++;
       if (this.current > this.slides.length) {
         this.current = 0;
@@ -70,15 +83,15 @@ export default {
   },
   mounted() {
     setInterval(this.selectSlide, this.timeout);
-    setTimeout(function() {
-      document.getElementById("current").className += " slideFromTop";
-      document.getElementById("prev").className += " slideInDown";
-    }, this.timeout);
-  },
+  }
 };
 </script>
 
 <style lang="scss" scoped>
+.container {
+  position: relative;
+  margin: 0 auto;
+}
 .slider {
   position: relative;
   z-index: 1;
@@ -113,7 +126,6 @@ export default {
   position: absolute;
   bottom: 0;
   width: 100%;
-  overflow-x: scroll;
 }
 .indicators li {
   flex-basis: 50%;
@@ -147,7 +159,7 @@ export default {
   text-align: center;
 }
 .mainDate {
-  font-size: 16px;
+  font-size: 15px;
   font-weight: bold;
   color: #cecdd1;
   text-align: center;
@@ -223,6 +235,8 @@ export default {
 .slideInDown {
   -webkit-animation: slideInDown 10s infinite;
   animation: slideInDown 10s infinite;
+  -webkit-animation-delay: 10s;
+  animation-delay: 10s;
 }
 
 #prev {
@@ -232,19 +246,6 @@ export default {
   position: absolute;
   top: 0;
   z-index: -1;
-}
-
-@-webkit-keyframes slideFromTop {
-  0% {
-    -webkit-transform: translate3d(0, -100%, 0);
-    transform: translate3d(0, -100%, 0);
-    visibility: visible;
-  }
-
-  15% {
-    -webkit-transform: translate3d(0, 0, 0);
-    transform: translate3d(0, 0, 0);
-  }
 }
 
 @keyframes slideFromTop {
@@ -264,11 +265,80 @@ export default {
   }
 }
 
+@-webkit-keyframes slideFromTop {
+  0% {
+    -webkit-transform: translate3d(0, -100%, 0);
+    transform: translate3d(0, -100%, 0);
+    visibility: visible;
+  }
+
+  15% {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+  }
+}
+
 .slideFromTop {
   -webkit-animation: slideFromTop 10s infinite;
   animation: slideFromTop 10s infinite;
+  -webkit-animation-delay: 10s;
+  animation-delay: 10s;
 }
 
+@-webkit-keyframes timer {
+  0% {
+  }
+
+  100% {
+    width: 0;
+  }
+}
+
+@keyframes timer {
+  0% {
+  }
+  100% {
+    width: 0;
+  }
+}
+
+.timer {
+  -webkit-animation: timer 10s infinite;
+  animation: timer 10s infinite;
+  -webkit-animation-delay: 0.75s;
+  animation-delay: 0.75s;
+}
+
+@keyframes opacity {
+  0% {
+    -webkit-transform: translate3d(0, -100%, 0);
+    transform: translate3d(0, -100%, 0);
+    visibility: visible;
+  }
+
+  15% {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@-webkit-keyframes opacity {
+  0% {
+    opacity: 1;
+  }
+
+  15% {
+    opacity: 0;
+  }
+}
+.opacity {
+  -webkit-animation: opacity 10s infinite;
+  animation: opacity 10s infinite;
+}
 @media screen and(min-width:750px) {
   .mainPost {
     height: 50vh;
@@ -284,10 +354,10 @@ export default {
     width: 15vw;
   }
   .mainDate {
-    font-size: 19px;
+    font-size: 17px;
   }
   .mainTitle {
-    font-size: 25px;
+    font-size: 26px;
     padding: 10px 30px 10px 30px;
   }
   .item .title {
@@ -296,15 +366,65 @@ export default {
   }
   .smallGradient {
     justify-content: center;
-    background-image: linear-gradient(270deg, rgba(36,38,54,0) 0%, #232535 100%);
+    background-image: linear-gradient(
+      270deg,
+      rgba(36, 38, 54, 0) 0%,
+      #232535 100%
+    );
   }
-  .item .date{
-    display:block;
-     font-size: 14px;
-  font-weight: bold;
-  color: #cecdd1;
-  text-align: left;
-  margin:15px 0px 0 15px;
+  .item .date {
+    display: block;
+    font-size: 14px;
+    font-weight: bold;
+    color: #cecdd1;
+    text-align: left;
+    margin: 15px 0px 0 15px;
+  }
+}
+@media screen and (min-width: 1366px) {
+  .slider {
+    height: 60vh;
+  }
+  .mainPost {
+    height: 60vh;
+  }
+  .indicators {
+    flex-direction: column;
+    height: 100%;
+    width: 30%;
+    right: 0;
+  }
+  .indicators li {
+    padding: 15px;
+  }
+  .item {
+    height: 100%;
+  }
+  .postCont {
+    width: 100%;
+    top: 0;
+    max-width: 1026px;
+    margin: 0 auto;
+    position: relative;
+  }
+  .mainDate,
+  .mainTitle {
+    text-align: left;
+  }
+  .mainTitle {
+    padding: 30px 0 40px 0;
+    max-width: 60%;
+  }
+  .yellowBar {
+    width: 10vw;
+    margin: 0;
+  }
+  .gradient {
+    background-image: linear-gradient(
+      270deg,
+      rgba(36, 38, 54, 0) 0%,
+      #232535 100%
+    );
   }
 }
 </style>

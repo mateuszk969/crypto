@@ -5,7 +5,7 @@
             <button v-on:click="sortedByDate">Newest </button>
             <button v-on:click="sortedByPopular">Popular</button>
         </div>
-        <ul class="posts" v-bind:class="{scroll:scroll}">
+        <ul class="posts" :class="{scroll:scroll}">
             <li class="post" v-for="post in posts"
                 :key="post.date">
                     <div class="postCont">

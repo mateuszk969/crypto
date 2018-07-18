@@ -28,6 +28,7 @@ module.exports = {
   ** Global CSS
   */
   css: [
+    '~/css/main.css'
   ],
 
   /*
@@ -44,8 +45,8 @@ module.exports = {
   modules: [
     ['nuxt-mq', {
       breakpoints: {
-        sm: 769,
-        md: 1250,
+        sm: 750,
+        md: 1366,
         lg: Infinity,
       }
     }],

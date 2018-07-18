@@ -70,25 +70,4 @@ body{
   height:100%;
 }
 
-@media screen and (min-width: 750px) {
-  .container{
-    position:relative;
-    margin: 0 auto;
-  }
-}
-
-@media screen and (min-width: 1366px) {
-  .container{
-    position:relative;
-    max-width: 1026px;
-    margin: 0 auto;
-  }
-}
-@media screen and (min-width: 1920px) {
-  .container{
-    position:relative;
-    max-width: 1140px;
-    margin: 0 auto;
-  }
-}
 </style>

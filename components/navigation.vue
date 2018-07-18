@@ -114,6 +114,7 @@ export default {
   z-index: 1000;
   padding: 0;
   left: 0;
+  top:0;
 }
 .mobileMenu .menu li a {
   color: white;
@@ -146,6 +147,9 @@ export default {
   font-weight: bold;
 }
 @media screen and (min-width: 750px) {
+   .nav{
+   margin:20px 0 20px 0;
+   }
   .login {
     display: flex;
     margin-right: 40px;
@@ -159,8 +163,12 @@ export default {
   .cont {
     left: 40px;
   }
+ .mobileMenu .login{
+    top:42px;
+  }
 }
 @media screen and (min-width: 1366px) {
+  
   .cont {
     display: none;
   }
