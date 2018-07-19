@@ -208,12 +208,12 @@ export default {
     transform: translate3d(0, 0, 0);
     visibility: visible;
   }
-  1% {
+  10% {
     -webkit-transform: translate3d(0, 0, 0);
     transform: translate3d(0, 0, 0);
     visibility: visible;
   }
-  15% {
+  25% {
     -webkit-transform: translate3d(0, 100%, 0);
     transform: translate3d(0, 100%, 0);
   }
@@ -225,12 +225,12 @@ export default {
     transform: translate3d(0, 0, 0);
     visibility: visible;
   }
-  1% {
+  10% {
     -webkit-transform: translate3d(0, 0, 0);
     transform: translate3d(0, 0, 0);
     visibility: visible;
   }
-  15% {
+  25% {
     -webkit-transform: translate3d(0, 100%, 0);
     transform: translate3d(0, 100%, 0);
   }
@@ -255,6 +255,9 @@ export default {
   top: 0;
   z-index: -1;
 }
+#prev .mainTitle {
+  margin-bottom: 6px;
+}
 
 @keyframes slideFromTop {
   0% {
@@ -262,12 +265,12 @@ export default {
     transform: translate3d(0, -100%, 0);
     visibility: visible;
   }
-  1% {
+  10% {
     -webkit-transform: translate3d(0, -100%, 0);
     transform: translate3d(0, -100%, 0);
     visibility: visible;
   }
-  15% {
+  25% {
     -webkit-transform: translate3d(0, 0, 0);
     transform: translate3d(0, 0, 0);
   }
@@ -283,13 +286,13 @@ export default {
     transform: translate3d(0, -100%, 0);
     visibility: visible;
   }
-  1% {
+  10% {
     -webkit-transform: translate3d(0, -100%, 0);
     transform: translate3d(0, -100%, 0);
     visibility: visible;
   }
 
-  15% {
+  25% {
     -webkit-transform: translate3d(0, 0, 0);
     transform: translate3d(0, 0, 0);
   }
@@ -322,8 +325,8 @@ export default {
 .timer {
   -webkit-animation: timer 10s infinite;
   animation: timer 10s infinite;
-  -webkit-animation-delay: 0.85s;
-  animation-delay: 0.85s;
+  -webkit-animation-delay: 1.75s;
+  animation-delay: 1.75s;
 }
 
 @keyframes opacity {
@@ -354,8 +357,8 @@ export default {
 .opacity {
   -webkit-animation: opacity 10s infinite;
   animation: opacity 10s infinite;
-  -webkit-animation-delay: 10.1s;
-  animation-delay: 10.1s;
+  -webkit-animation-delay: 11s;
+  animation-delay: 11s;
 }
 @media screen and(min-width:750px) {
   .mainPost {
