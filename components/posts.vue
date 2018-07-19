@@ -48,6 +48,8 @@ export default {
         case "lg":
           return this.posts.slice(0, 9);
           break;
+        default:
+          return this.posts.slice(0, 9);
       }
     }
   },
