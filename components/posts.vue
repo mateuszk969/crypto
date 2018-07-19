@@ -55,14 +55,14 @@ export default {
   },
   methods: {
     sortedByPopular() {
+      this.newest = false;
       return this.posts.sort((a, b) => {
-        this.newest = false;
         return a.comment < b.comment;
       });
     },
     sortedByDate() {
+      this.newest = true;
       return this.posts.sort((a, b) => {
-        this.newest = true;
         return a.date < b.date;
       });
     },
@@ -184,7 +184,7 @@ ul.scroll {
     height: 12.5vh;
   }
   .head {
-    flex-direction: column-reverse;
+    flex-direction: row-reverse;
   }
   .headTitle {
     position: absolute;
@@ -194,6 +194,21 @@ ul.scroll {
   }
   .posts {
     margin-top: 50px;
+  }
+  @media screen and (min-width: 1366px) {
+    li.post {
+      flex-basis: 33.3%;
+      height: 35vh;
+    }
+    ul.posts {
+      height: 87.5vh;
+    }
+    .gradient {
+      height: 17.5vh;
+    }
+    .head {
+      flex-direction: column;
+    }
   }
 }
 </style>

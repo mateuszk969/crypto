@@ -336,8 +336,8 @@ export default {
 .timer {
   -webkit-animation: timer 10s infinite;
   animation: timer 10s infinite;
-  -webkit-animation-delay: 1.75s;
-  animation-delay: 1.75s;
+  -webkit-animation-delay: 1.5s;
+  animation-delay: 1.5s;
 }
 
 @keyframes opacity {
@@ -372,8 +372,8 @@ export default {
 .opacity {
   -webkit-animation: opacity 10s infinite;
   animation: opacity 10s infinite;
-  -webkit-animation-delay: 9.5s;
-  animation-delay: 9.5s;
+  -webkit-animation-delay: 9s;
+  animation-delay: 9s;
 }
 @media screen and(min-width:750px) {
   .mainPost {
