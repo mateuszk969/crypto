@@ -372,8 +372,8 @@ export default {
 .opacity {
   -webkit-animation: opacity 10s infinite;
   animation: opacity 10s infinite;
-  -webkit-animation-delay: 10s;
-  animation-delay: 10s;
+  -webkit-animation-delay: 9.5s;
+  animation-delay: 9.5s;
 }
 @media screen and(min-width:750px) {
   .mainPost {
