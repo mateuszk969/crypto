@@ -211,12 +211,16 @@ export default {
     transform: translate3d(0, 0, 0);
     visibility: visible;
   }
-  10% {
+  5% {
     -webkit-transform: translate3d(0, 0, 0);
     transform: translate3d(0, 0, 0);
     visibility: visible;
   }
-  25% {
+  20% {
+    -webkit-transform: translate3d(0, 100%, 0);
+    transform: translate3d(0, 100%, 0);
+  }
+  100% {
     -webkit-transform: translate3d(0, 100%, 0);
     transform: translate3d(0, 100%, 0);
   }
@@ -228,12 +232,12 @@ export default {
     transform: translate3d(0, 0, 0);
     visibility: visible;
   }
-  10% {
+  5% {
     -webkit-transform: translate3d(0, 0, 0);
     transform: translate3d(0, 0, 0);
     visibility: visible;
   }
-  25% {
+  20% {
     -webkit-transform: translate3d(0, 100%, 0);
     transform: translate3d(0, 100%, 0);
   }
@@ -268,12 +272,12 @@ export default {
     transform: translate3d(0, -100%, 0);
     visibility: visible;
   }
-  10% {
+  5% {
     -webkit-transform: translate3d(0, -100%, 0);
     transform: translate3d(0, -100%, 0);
     visibility: visible;
   }
-  25% {
+  20% {
     -webkit-transform: translate3d(0, 0, 0);
     transform: translate3d(0, 0, 0);
   }
@@ -289,13 +293,17 @@ export default {
     transform: translate3d(0, -100%, 0);
     visibility: visible;
   }
-  10% {
+  5% {
     -webkit-transform: translate3d(0, -100%, 0);
     transform: translate3d(0, -100%, 0);
     visibility: visible;
   }
 
-  25% {
+  20% {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
     -webkit-transform: translate3d(0, 0, 0);
     transform: translate3d(0, 0, 0);
   }
@@ -336,8 +344,10 @@ export default {
   0% {
     opacity: 0;
   }
-
-  15% {
+  10% {
+    opacity: 0;
+  }
+  25% {
     opacity: 1;
   }
   100% {
@@ -349,8 +359,10 @@ export default {
   0% {
     opacity: 0;
   }
-
-  15% {
+  10% {
+    opacity: 0;
+  }
+  25% {
     opacity: 1;
   }
   100% {
@@ -360,8 +372,8 @@ export default {
 .opacity {
   -webkit-animation: opacity 10s infinite;
   animation: opacity 10s infinite;
-  -webkit-animation-delay: 10.5s;
-  animation-delay: 10.5s;
+  -webkit-animation-delay: 10s;
+  animation-delay: 10s;
 }
 @media screen and(min-width:750px) {
   .mainPost {
