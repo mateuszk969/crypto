@@ -26,7 +26,7 @@
     <div class="container">
     <ul class="indicators">
       <li v-for="(slide,i) in slides" :key="i">
-        <div class="item" :style="{backgroundImage: `url(${slide.thumbnail})`}">
+        <div class="item opacity" :style="{backgroundImage: `url(${slide.thumbnail})`}">
           <div class="smallGradient">
 					<nuxt-link :to="slide._path">
             <p class="date">{{slide.date.substring(0,10)}} | {{slide.comment}} comments</p>
@@ -46,9 +46,9 @@ export default {
   data() {
     return {
       current: 0,
-      slides: [...this.$store.getters.loadedPosts.slice(1, 3)],
       previous: { ...this.$store.getters.loadedPosts[0] },
       playslides: { ...this.$store.getters.loadedPosts[0] },
+      slides: this.$store.getters.loadedPosts.slice(1, 4),
       timeout: 10000,
       width: 0,
       added: 0
@@ -68,21 +68,21 @@ export default {
   },
 
   methods: {
-    selectPrev() {
-      this.previous = this.playslides;
-    },
     selectSlide() {
-      this.previous = this.playslides;
       this.slides.push(this.playslides);
       this.playslides = this.slides.shift();
       this.current++;
       if (this.current > this.slides.length) {
         this.current = 0;
       }
+      setTimeout(() => (this.previous = this.playslides), 2000);
     }
   },
   mounted() {
     setInterval(this.selectSlide, this.timeout);
+    if (this.$mq == "md" || this.$mq == "sm") {
+      this.added = this.slides.pop();
+    }
   }
 };
 </script>
@@ -122,13 +122,13 @@ export default {
   padding: 0;
   display: flex;
   flex-direction: row;
-  flex-basis: 50%;
   position: absolute;
   bottom: 0;
   width: 100%;
 }
 .indicators li {
   flex-basis: 50%;
+  min-width: 50%;
 }
 .item {
   background-size: cover;
@@ -311,33 +311,34 @@ export default {
 
 @keyframes opacity {
   0% {
-    -webkit-transform: translate3d(0, -100%, 0);
-    transform: translate3d(0, -100%, 0);
-    visibility: visible;
+    opacity: 0;
   }
 
-  15% {
-    -webkit-transform: translate3d(0, 0, 0);
-    transform: translate3d(0, 0, 0);
+  10% {
+    opacity: 1;
   }
   100% {
-    -webkit-transform: translate3d(0, 0, 0);
-    transform: translate3d(0, 0, 0);
+    opacity: 1;
   }
 }
 
 @-webkit-keyframes opacity {
   0% {
-    opacity: 1;
+    opacity: 0;
   }
 
-  15% {
-    opacity: 0;
+  10% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 1;
   }
 }
 .opacity {
   -webkit-animation: opacity 10s infinite;
   animation: opacity 10s infinite;
+  -webkit-animation-delay: 10s;
+  animation-delay: 10s;
 }
 @media screen and(min-width:750px) {
   .mainPost {
