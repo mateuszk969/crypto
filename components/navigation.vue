@@ -89,10 +89,10 @@ export default {
   -webkit-transform: rotate(45deg) translate(-7px, -6px);
   transform: rotate(45deg) translate(-7px, -6px);
 }
-  .menu li a {
-    text-decoration: none;
-    color:black;
-  }
+.menu li a {
+  text-decoration: none;
+  color: black;
+}
 .login {
   position: absolute;
   display: flex;
@@ -114,7 +114,7 @@ export default {
   z-index: 1000;
   padding: 0;
   left: 0;
-  top:0;
+  top: 0;
 }
 .mobileMenu .menu li a {
   color: white;
@@ -143,13 +143,13 @@ export default {
   border-radius: 40px;
   font-weight: bold;
 }
-.nuxt-link-exact-active{
+.nuxt-link-exact-active {
   font-weight: bold;
 }
 @media screen and (min-width: 750px) {
-   .nav{
-   margin:20px 0 20px 0;
-   }
+  .nav {
+    margin: 20px 0 20px 0;
+  }
   .login {
     display: flex;
     margin-right: 40px;
@@ -163,12 +163,11 @@ export default {
   .cont {
     left: 40px;
   }
- .mobileMenu .login{
-    top:42px;
+  .mobileMenu .login {
+    top: 42px;
   }
 }
 @media screen and (min-width: 1366px) {
-  
   .cont {
     display: none;
   }
@@ -184,7 +183,7 @@ export default {
   .login {
     display: flex;
     position: inherit;
-    margin:0;
+    margin: 0;
   }
   .fullMenu {
     display: flex;
@@ -194,7 +193,7 @@ export default {
     width: 100%;
     justify-content: flex-end;
   }
-  .fullMenu ul{
+  .fullMenu ul {
     padding: 0 5px 0 5px;
   }
 }
