@@ -211,7 +211,7 @@ export default {
     transform: translate3d(0, 0, 0);
     visibility: visible;
   }
-  5% {
+  8% {
     -webkit-transform: translate3d(0, 0, 0);
     transform: translate3d(0, 0, 0);
     visibility: visible;
@@ -232,7 +232,7 @@ export default {
     transform: translate3d(0, 0, 0);
     visibility: visible;
   }
-  5% {
+  8% {
     -webkit-transform: translate3d(0, 0, 0);
     transform: translate3d(0, 0, 0);
     visibility: visible;
@@ -250,8 +250,8 @@ export default {
 .slideInDown {
   -webkit-animation: slideInDown 10s infinite;
   animation: slideInDown 10s infinite;
-  -webkit-animation-delay: 10s;
-  animation-delay: 10s;
+  -webkit-animation-delay: 9.5s;
+  animation-delay: 9.5s;
 }
 
 #prev {
@@ -312,8 +312,8 @@ export default {
 .slideFromTop {
   -webkit-animation: slideFromTop 10s infinite;
   animation: slideFromTop 10s infinite;
-  -webkit-animation-delay: 10.3s;
-  animation-delay: 10.3s;
+  -webkit-animation-delay: 9.5s;
+  animation-delay: 9.5s;
 }
 
 @-webkit-keyframes timer {
