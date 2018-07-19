@@ -19,6 +19,7 @@
                         <nuxt-link :to="previous._path">
                             <p class="mainTitle">{{previous.title}}</p>
                         </nuxt-link>
+                         <div class="empty"></div>
                    </div>
                    </div>
 						</div>
@@ -201,7 +202,9 @@ export default {
   width: 30vw;
   margin: 20px auto 20px auto;
 }
-
+.empty {
+  margin: 20px auto 20px auto;
+}
 @-webkit-keyframes slideInDown {
   0% {
     -webkit-transform: translate3d(0, 0, 0);
