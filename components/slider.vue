@@ -75,7 +75,7 @@ export default {
       if (this.current > this.slides.length) {
         this.current = 0;
       }
-      setTimeout(() => (this.previous = this.playslides), 2000);
+      setTimeout(() => (this.previous = this.playslides), 5000);
     }
   },
   mounted() {
