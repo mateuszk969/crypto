@@ -342,7 +342,7 @@ export default {
 
 @keyframes opacity {
   0% {
-    opacity: 0;
+    opacity: 1;
   }
   10% {
     opacity: 0;
@@ -357,7 +357,7 @@ export default {
 
 @-webkit-keyframes opacity {
   0% {
-    opacity: 0;
+    opacity: 1;
   }
   10% {
     opacity: 0;
