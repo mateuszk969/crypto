@@ -208,7 +208,11 @@ export default {
     transform: translate3d(0, 0, 0);
     visibility: visible;
   }
-
+  1% {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+    visibility: visible;
+  }
   15% {
     -webkit-transform: translate3d(0, 100%, 0);
     transform: translate3d(0, 100%, 0);
@@ -221,7 +225,11 @@ export default {
     transform: translate3d(0, 0, 0);
     visibility: visible;
   }
-
+  1% {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+    visibility: visible;
+  }
   15% {
     -webkit-transform: translate3d(0, 100%, 0);
     transform: translate3d(0, 100%, 0);
@@ -254,7 +262,11 @@ export default {
     transform: translate3d(0, -100%, 0);
     visibility: visible;
   }
-
+  1% {
+    -webkit-transform: translate3d(0, -100%, 0);
+    transform: translate3d(0, -100%, 0);
+    visibility: visible;
+  }
   15% {
     -webkit-transform: translate3d(0, 0, 0);
     transform: translate3d(0, 0, 0);
@@ -267,6 +279,11 @@ export default {
 
 @-webkit-keyframes slideFromTop {
   0% {
+    -webkit-transform: translate3d(0, -100%, 0);
+    transform: translate3d(0, -100%, 0);
+    visibility: visible;
+  }
+  1% {
     -webkit-transform: translate3d(0, -100%, 0);
     transform: translate3d(0, -100%, 0);
     visibility: visible;
@@ -305,8 +322,8 @@ export default {
 .timer {
   -webkit-animation: timer 10s infinite;
   animation: timer 10s infinite;
-  -webkit-animation-delay: 0.75s;
-  animation-delay: 0.75s;
+  -webkit-animation-delay: 0.85s;
+  animation-delay: 0.85s;
 }
 
 @keyframes opacity {
@@ -337,8 +354,8 @@ export default {
 .opacity {
   -webkit-animation: opacity 10s infinite;
   animation: opacity 10s infinite;
-  -webkit-animation-delay: 10s;
-  animation-delay: 10s;
+  -webkit-animation-delay: 10.1s;
+  animation-delay: 10.1s;
 }
 @media screen and(min-width:750px) {
   .mainPost {
