@@ -1,26 +1,28 @@
 <template>
   <div>
     <div class="container">
-    <navigation></navigation>
+    <navigation />
     </div>
       <nuxt />
+      <register />
   </div>
 </template>
 
 <script>
-import navigation from '@/components/navigation'
+import navigation from "@/components/navigation";
+import register from "@/components/register";
 export default {
   components: {
-    navigation
+    navigation,
+    register
   }
-}
+};
 </script>
 
 <style>
-html
-{
-  height:100%;
-  font-family: 'Roboto', sans-serif;
+html {
+  height: 100%;
+  font-family: "Roboto", sans-serif;
   font-size: 16px;
   word-spacing: 1px;
   -ms-text-size-adjust: 100%;
@@ -29,13 +31,13 @@ html
   -webkit-font-smoothing: antialiased;
   box-sizing: border-box;
 }
-*, *:before, *:after
-{
+*,
+*:before,
+*:after {
   box-sizing: border-box;
   margin: 0;
 }
-.button--green
-{
+.button--green {
   display: inline-block;
   border-radius: 4px;
   border: 1px solid #3b8070;
@@ -43,13 +45,11 @@ html
   text-decoration: none;
   padding: 10px 30px;
 }
-.button--green:hover
-{
+.button--green:hover {
   color: #fff;
   background-color: #3b8070;
 }
-.button--grey
-{
+.button--grey {
   display: inline-block;
   border-radius: 4px;
   border: 1px solid #35495e;
@@ -58,16 +58,14 @@ html
   padding: 10px 30px;
   margin-left: 15px;
 }
-.button--grey:hover
-{
+.button--grey:hover {
   color: #fff;
   background-color: #35495e;
 }
-body{
-  height:100%;
+body {
+  height: 100%;
 }
-#__nuxt{
-  height:100%;
+#__nuxt {
+  height: 100%;
 }
-
 </style>

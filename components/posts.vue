@@ -14,7 +14,11 @@
                 :key="post.date">
                     <div class="postCont">
                         <nuxt-link :to="post._path">
-                            <div class="img" :style="{backgroundImage: `url(${post.thumbnail})`}"></div>
+                            <div class="img" :style="{backgroundImage: `url(${post.thumbnail})`}">
+                              <div class="hover">
+                              <div class="circle">></div>
+                              </div>
+                            </div>
                             <p class="date">{{post.date.substring(0,10)}} | {{post.comment}} comments</p>
                             <p class="title">{{post.title}}</p>
                         </nuxt-link>
@@ -94,6 +98,7 @@ export default {
   align-self: flex-end;
 }
 .sortButtons p {
+  cursor: pointer;
   color: #8e8e8e;
   font-size: 13px;
   margin: 0 6px 0 6px;
@@ -104,9 +109,35 @@ p.active {
 }
 .img {
   width: 100%;
-  height: 100%;
+  min-height: 70%;
   background-size: cover;
+  display: flex;
   background-position: 50% 50%;
+}
+.hover {
+  width: 100%;
+  height: auto;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(247, 251, 43, 0.7);
+}
+li:hover .postCont a .img .hover {
+  display: flex;
+}
+li:hover .postCont a .title {
+  color: #8e8e8e;
+}
+.circle {
+  padding: 20px;
+  border-radius: 50%;
+  width: 70px;
+  height: 70px;
+  background-color: white;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .title {
   text-align: left;
@@ -145,7 +176,7 @@ li.post {
   align-items: center;
 }
 .date {
-  color: grey;
+  color: #8e8e8e;
   font-weight: bold;
   font-size: 13px;
   margin: 10px 0 10px 0;
@@ -191,11 +222,16 @@ ul.scroll {
     width: 100%;
     text-align: center;
     font-size: 22px;
+    z-index: -1;
   }
   .posts {
     margin-top: 50px;
   }
   @media screen and (min-width: 1366px) {
+    .headTitle {
+      position: initial;
+      text-align: left;
+    }
     li.post {
       flex-basis: 33.3%;
       height: 35vh;
@@ -207,7 +243,7 @@ ul.scroll {
       height: 17.5vh;
     }
     .head {
-      flex-direction: column;
+      flex-direction: row;
     }
   }
 }

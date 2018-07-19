@@ -130,7 +130,7 @@ export default {
 .signIn a {
   color: #23262f;
   text-decoration: none;
-  background-color: white;
+  background-color: #e5e9ec;
   padding: 10px 20px 10px 20px;
   border-radius: 40px;
   font-weight: bold;
