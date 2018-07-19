@@ -314,7 +314,7 @@ export default {
     opacity: 0;
   }
 
-  10% {
+  15% {
     opacity: 1;
   }
   100% {
@@ -327,7 +327,7 @@ export default {
     opacity: 0;
   }
 
-  10% {
+  15% {
     opacity: 1;
   }
   100% {
