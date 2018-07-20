@@ -4,17 +4,23 @@
     <navigation />
     </div>
       <nuxt />
-      <register />
+      <div class="margin">
+        <registerBar/>
+      </div>
+      <foot />
   </div>
 </template>
 
 <script>
 import navigation from "@/components/navigation";
-import register from "@/components/register";
+import registerBar from "@/components/registerBar";
+import foot from "@/components/foot";
+
 export default {
   components: {
     navigation,
-    register
+    registerBar,
+    foot
   }
 };
 </script>
@@ -67,5 +73,8 @@ body {
 }
 #__nuxt {
   height: 100%;
+}
+.margin {
+  margin-bottom: 30px;
 }
 </style>

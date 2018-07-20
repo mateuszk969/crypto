@@ -29,6 +29,11 @@ export default {
       menu: false
     };
   },
+  watch: {
+    $mq() {
+      this.$mq == "lg" ? (this.menu = false) : (this.menu = this.menu);
+    }
+  },
   methods: {
     toggleMenu() {
       return (this.menu = !this.menu);
@@ -59,7 +64,9 @@ export default {
   cursor: pointer;
   z-index: 1001;
 }
-
+.change {
+  position: fixed;
+}
 .bar1,
 .bar3,
 .bar2 {
@@ -162,6 +169,9 @@ export default {
   }
   .cont {
     left: 40px;
+  }
+  .change {
+    top: 45px;
   }
   .mobileMenu .login {
     top: 42px;

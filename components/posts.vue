@@ -4,8 +4,8 @@
         <div class="head">
             <p class="headTitle">{{posts[0].type=="local" ? 'Latest crypto news' : 'Our company news'}}</p>
             <div class="sortButtons">
-            <p :class="{active : newest}" v-on:click="sortedByDate">Newest </p>
-            <p :class="{active : !newest}" v-on:click="sortedByPopular">Popular</p>
+            <button :class="{active : newest}" v-on:click="sortedByDate">Newest </button>
+            <button :class="{active : !newest}" v-on:click="sortedByPopular">Popular</button>
             </div> 
             </div>
         </div>
@@ -24,8 +24,8 @@
                         </nuxt-link>
                    </div>
             </li>
-              <div class="gradient">
-            <button class="showMore" @click="showMore">More news</button>
+              <div :class="{noPosts:noPosts}" class="gradient">
+            <button class="showMore">More news</button>
             </div>
       </ul>
       </div>
@@ -37,7 +37,8 @@ export default {
   data() {
     return {
       newest: true,
-      scroll: false
+      scroll: false,
+      noPosts: false
     };
   },
   computed: {
@@ -56,6 +57,13 @@ export default {
           return this.posts.slice(0, 9);
       }
     }
+  },
+  mounted() {
+    (this.displayedPosts.length < 3 && this.$mq == "sm") ||
+    (this.displayedPosts.length < 6 && this.$mq == "md") ||
+    (this.displayedPosts.length < 9 && this.$mq == "lg")
+      ? (this.noPosts = true)
+      : (this.noPosts = false);
   },
   methods: {
     sortedByPopular() {
@@ -97,13 +105,17 @@ export default {
   flex-direction: row;
   align-self: flex-end;
 }
-.sortButtons p {
+.sortButtons button {
   cursor: pointer;
   color: #8e8e8e;
+  margin: 0 5px 0 5px;
+  background: none;
+  border: none;
+  padding: 0 !important;
+  font: inherit;
   font-size: 13px;
-  margin: 0 6px 0 6px;
 }
-p.active {
+button.active {
   font-weight: bold;
   color: #457dd0;
 }
@@ -154,12 +166,14 @@ ul.posts {
   flex-direction: row;
   list-style: none;
   padding: 0;
-  height: 93vh;
+  max-height: 93vh;
   overflow: hidden;
+  min-height: 500px;
 }
 li.post {
   flex-basis: 100%;
   height: 37vh;
+  min-height: 200px;
 }
 .postCont {
   padding: 15px;
@@ -167,6 +181,7 @@ li.post {
 }
 .gradient {
   height: 19vh;
+  min-height: 100px;
   width: 100%;
   background-color: rgba(255, 255, 255, 0.8);
   position: absolute;
@@ -200,19 +215,26 @@ ul.scroll {
   font-weight: bold;
   border: 0;
 }
+.noPosts {
+  position: static;
+  align-items: flex-start;
+}
 @media screen and (min-width: 750px) {
   li.post {
     flex-basis: 50%;
     height: 25vh;
+    min-height: 200px;
   }
   .date {
     margin: 15px 0 15px 0;
   }
   ul.posts {
     height: 62.5vh;
+    min-height: 500px;
   }
   .gradient {
     height: 12.5vh;
+    min-height: 100px;
   }
   .head {
     flex-direction: row-reverse;
@@ -234,10 +256,10 @@ ul.scroll {
     }
     li.post {
       flex-basis: 33.3%;
-      height: 35vh;
+      height: 30vh;
     }
     ul.posts {
-      height: 87.5vh;
+      height: 77.5vh;
     }
     .gradient {
       height: 17.5vh;

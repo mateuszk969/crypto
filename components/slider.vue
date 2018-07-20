@@ -98,6 +98,7 @@ export default {
   z-index: 1;
   overflow: hidden;
   height: 50vh;
+  min-height: 250px;
 }
 .slider ul {
   list-style: none;
@@ -108,7 +109,6 @@ export default {
   height: 100%;
   margin: 0;
   padding: 0;
-  transition: top 800ms;
 }
 .slider .slides li {
   height: 100%;
@@ -116,6 +116,7 @@ export default {
 .mainPost {
   width: 100%;
   height: 35vh;
+  min-height: 175px;
   background-size: cover;
   background-position: 50% 50%;
 }
@@ -139,11 +140,12 @@ export default {
   display: flex;
   justify-content: center;
   align-items: flex-end;
+  min-height: 87.5px;
 }
 .item .title {
   margin: 15px;
-  font-size: 13px;
-  font-weight: bold;
+  font-size: 14px;
+  font-weight: 500;
   color: white;
   text-align: center;
 }
@@ -161,7 +163,7 @@ export default {
 }
 .mainDate {
   font-size: 15px;
-  font-weight: bold;
+  font-weight: 500;
   color: #cecdd1;
   text-align: center;
 }
@@ -372,12 +374,16 @@ export default {
 .opacity {
   -webkit-animation: opacity 10s infinite;
   animation: opacity 10s infinite;
-  -webkit-animation-delay: 9s;
-  animation-delay: 9s;
+  -webkit-animation-delay: 9.5s;
+  animation-delay: 9.5s;
 }
 @media screen and(min-width:750px) {
+  .slider {
+    min-height: 300px;
+  }
   .mainPost {
     height: 50vh;
+    min-height: 300px;
   }
   .indicators li {
     padding: 0 15px 20px 10px;
@@ -402,16 +408,11 @@ export default {
   }
   .smallGradient {
     justify-content: center;
-    background-image: linear-gradient(
-      270deg,
-      rgba(36, 38, 54, 0) 0%,
-      #232535 100%
-    );
   }
   .item .date {
     display: block;
     font-size: 14px;
-    font-weight: bold;
+    font-weight: 500;
     color: #cecdd1;
     text-align: left;
     margin: 15px 0px 0 15px;
@@ -426,12 +427,13 @@ export default {
   }
   .indicators {
     flex-direction: column;
-    height: 100%;
-    width: 30%;
+    width: 40%;
+    height: 92%;
+    top: 4%;
     right: 0;
   }
   .indicators li {
-    padding: 15px;
+    padding: 10px;
   }
   .item {
     height: 100%;
@@ -442,6 +444,7 @@ export default {
     max-width: 1026px;
     margin: 0 auto;
     position: relative;
+    padding: 20px;
   }
   .mainDate,
   .mainTitle {
@@ -449,7 +452,14 @@ export default {
   }
   .mainTitle {
     padding: 30px 0 40px 0;
-    max-width: 60%;
+    max-width: 50%;
+    font-size: 30px;
+  }
+  .date {
+    font-size: 13px;
+  }
+  .title {
+    max-width: 75%;
   }
   .yellowBar {
     width: 10vw;
@@ -461,6 +471,15 @@ export default {
       rgba(36, 38, 54, 0) 0%,
       #232535 100%
     );
+  }
+  .date,
+  .title {
+    padding-left: 20px;
+  }
+  @media screen and (min-width: 1920px) {
+    .slider {
+      height: 55vh;
+    }
   }
 }
 </style>
