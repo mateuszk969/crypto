@@ -75,6 +75,7 @@ body {
   height: 100%;
 }
 .margin {
+  margin-top: 30px;
   margin-bottom: 30px;
 }
 </style>

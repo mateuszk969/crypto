@@ -58,12 +58,13 @@ export default {
       }
     }
   },
+  watch: {
+    $mq() {
+      this.addGradient();
+    }
+  },
   mounted() {
-    (this.displayedPosts.length < 3 && this.$mq == "sm") ||
-    (this.displayedPosts.length < 6 && this.$mq == "md") ||
-    (this.displayedPosts.length < 9 && this.$mq == "lg")
-      ? (this.noPosts = true)
-      : (this.noPosts = false);
+    this.addGradient();
   },
   methods: {
     sortedByPopular() {
@@ -80,6 +81,13 @@ export default {
     },
     showMore() {
       this.scroll = true;
+    },
+    addGradient() {
+      (this.displayedPosts.length < 3 && this.$mq == "sm") ||
+      (this.displayedPosts.length < 5 && this.$mq == "md") ||
+      (this.displayedPosts.length < 7 && this.$mq == "lg")
+        ? (this.noPosts = true)
+        : (this.noPosts = false);
     }
   }
 };
@@ -162,7 +170,7 @@ ul.posts {
   margin: 0 auto;
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: flex-start;
   flex-direction: row;
   list-style: none;
   padding: 0;
