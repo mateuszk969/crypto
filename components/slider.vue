@@ -97,7 +97,7 @@ export default {
   position: relative;
   z-index: 1;
   overflow: hidden;
-  height: 50vh;
+  height: 55vh;
   min-height: 250px;
 }
 .slider ul {
@@ -127,16 +127,19 @@ export default {
   position: absolute;
   bottom: 0;
   width: 100%;
+  min-height: 100px;
+  height: 20vh;
 }
 .indicators li {
   flex-basis: 50%;
   min-width: 50%;
-  min-height: 87.5px;
+  max-height: 100%;
 }
 .item {
   background-size: cover;
   background-position: 50% 50%;
   width: 100%;
+  height: 100%;
   display: flex;
   justify-content: center;
   align-items: flex-end;
@@ -380,16 +383,21 @@ export default {
 .opacity {
   -webkit-animation: opacity 10s infinite;
   animation: opacity 10s infinite;
-  -webkit-animation-delay: 9.5s;
-  animation-delay: 9.5s;
+  -webkit-animation-delay: 10s;
+  animation-delay: 10s;
 }
 @media screen and(min-width:750px) {
   .slider {
     min-height: 300px;
+    height: 45vh;
   }
   .mainPost {
     height: 50vh;
     min-height: 300px;
+  }
+  .indicators {
+    height: 17.5vh;
+    min-height: 100px;
   }
   .indicators li {
     padding: 0 15px 20px 10px;
@@ -440,6 +448,7 @@ export default {
   }
   .indicators li {
     padding: 10px;
+    height: 33.3%;
   }
   .item {
     height: 100%;
