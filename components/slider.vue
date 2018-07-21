@@ -76,7 +76,7 @@ export default {
       if (this.current > this.slides.length) {
         this.current = 0;
       }
-      setTimeout(() => (this.previous = this.playslides), 5000);
+      setTimeout(() => (this.previous = this.playslides), this.timemout / 2);
     }
   },
   mounted() {
@@ -131,16 +131,15 @@ export default {
 .indicators li {
   flex-basis: 50%;
   min-width: 50%;
+  min-height: 87.5px;
 }
 .item {
   background-size: cover;
   background-position: 50% 50%;
   width: 100%;
-  height: 17.5vh;
   display: flex;
   justify-content: center;
   align-items: flex-end;
-  min-height: 87.5px;
 }
 .item .title {
   margin: 15px;

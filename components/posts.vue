@@ -69,15 +69,17 @@ export default {
   methods: {
     sortedByPopular() {
       this.newest = false;
-      return this.posts.sort((a, b) => {
-        return a.comment < b.comment;
+      this.posts.sort((a, b) => {
+        return a.comment < b.comment || -(a.comment > b.comment);
       });
+      console.log(this.posts);
     },
     sortedByDate() {
       this.newest = true;
-      return this.posts.sort((a, b) => {
-        return a.date < b.date;
+      this.posts.sort((a, b) => {
+        return a.date < b.date || -(a.date > b.date);
       });
+      console.log(this.posts);
     },
     showMore() {
       this.scroll = true;
