@@ -27,7 +27,6 @@
     <div class="container">
     <ul class="indicators">
       <li v-for="(slide,i) in slides" :key="i">
-         <transition name="opacity">
         <div class="item opacity" :style="{backgroundImage: `url(${slide.thumbnail})`}">
           <div class="smallGradient">
 					<nuxt-link :to="slide._path">
@@ -36,7 +35,6 @@
 					 </nuxt-link>
         </div>
         </div>
-                </transition>
       </li>
     </ul>
     </div>
@@ -93,6 +91,9 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.flip-list-move {
+  transition: transform 1s;
+}
 .container {
   position: relative;
   margin: 0 auto;
@@ -210,9 +211,7 @@ export default {
   width: 30vw;
   margin: 20px auto 20px auto;
 }
-.empty {
-  margin: 20px auto 20px auto;
-}
+
 @-webkit-keyframes slideInDown {
   0% {
     -webkit-transform: translate3d(0, 0, 0);
