@@ -27,6 +27,7 @@
     <div class="container">
     <ul class="indicators">
       <li v-for="(slide,i) in slides" :key="i">
+         <transition name="opacity">
         <div class="item opacity" :style="{backgroundImage: `url(${slide.thumbnail})`}">
           <div class="smallGradient">
 					<nuxt-link :to="slide._path">
@@ -35,6 +36,7 @@
 					 </nuxt-link>
         </div>
         </div>
+                </transition>
       </li>
     </ul>
     </div>
@@ -80,10 +82,12 @@ export default {
     }
   },
   mounted() {
-    setInterval(this.selectSlide, this.timeout);
     if (this.$mq == "md" || this.$mq == "sm") {
       this.added = this.slides.pop();
     }
+  },
+  created() {
+    setInterval(this.selectSlide, this.timeout);
   }
 };
 </script>
@@ -215,12 +219,12 @@ export default {
     transform: translate3d(0, 0, 0);
     visibility: visible;
   }
-  10% {
+  15% {
     -webkit-transform: translate3d(0, 0, 0);
     transform: translate3d(0, 0, 0);
     visibility: visible;
   }
-  20% {
+  25% {
     -webkit-transform: translate3d(0, 100%, 0);
     transform: translate3d(0, 100%, 0);
   }
@@ -236,12 +240,12 @@ export default {
     transform: translate3d(0, 0, 0);
     visibility: visible;
   }
-  10% {
+  15% {
     -webkit-transform: translate3d(0, 0, 0);
     transform: translate3d(0, 0, 0);
     visibility: visible;
   }
-  20% {
+  25% {
     -webkit-transform: translate3d(0, 100%, 0);
     transform: translate3d(0, 100%, 0);
   }
@@ -254,8 +258,8 @@ export default {
 .slideInDown {
   -webkit-animation: slideInDown 10s infinite;
   animation: slideInDown 10s infinite;
-  -webkit-animation-delay: 10s;
-  animation-delay: 10s;
+  -webkit-animation-delay: 9s;
+  animation-delay: 9s;
 }
 
 #prev {
@@ -276,12 +280,12 @@ export default {
     transform: translate3d(0, -100%, 0);
     visibility: visible;
   }
-  10% {
+  15% {
     -webkit-transform: translate3d(0, -100%, 0);
     transform: translate3d(0, -100%, 0);
     visibility: visible;
   }
-  20% {
+  25% {
     -webkit-transform: translate3d(0, 0, 0);
     transform: translate3d(0, 0, 0);
   }
@@ -297,13 +301,13 @@ export default {
     transform: translate3d(0, -100%, 0);
     visibility: visible;
   }
-  10% {
+  15% {
     -webkit-transform: translate3d(0, -100%, 0);
     transform: translate3d(0, -100%, 0);
     visibility: visible;
   }
 
-  20% {
+  25% {
     -webkit-transform: translate3d(0, 0, 0);
     transform: translate3d(0, 0, 0);
   }
@@ -316,16 +320,16 @@ export default {
 .slideFromTop {
   -webkit-animation: slideFromTop 10s infinite;
   animation: slideFromTop 10s infinite;
-  -webkit-animation-delay: 10s;
-  animation-delay: 10s;
+  -webkit-animation-delay: 9s;
+  animation-delay: 9s;
 }
 
 @-webkit-keyframes timer {
   0% {
-    width: 100%;
+    width: 10vw;
   }
-  10% {
-    width: 100%;
+  15% {
+    width: 10vw;
   }
   100% {
     width: 0;
@@ -336,7 +340,7 @@ export default {
   0% {
     width: 10vw;
   }
-  10% {
+  15% {
     width: 10vw;
   }
   100% {
@@ -347,8 +351,6 @@ export default {
 .timer {
   -webkit-animation: timer 10s infinite;
   animation: timer 10s infinite;
-  -webkit-animation-delay: 1.5s;
-  animation-delay: 1.5s;
 }
 
 @keyframes opacity {
@@ -358,7 +360,10 @@ export default {
   10% {
     opacity: 0;
   }
-  25% {
+  20% {
+    opacity: 0;
+  }
+  30% {
     opacity: 1;
   }
   100% {
@@ -373,7 +378,10 @@ export default {
   10% {
     opacity: 0;
   }
-  25% {
+  20% {
+    opacity: 0;
+  }
+  30% {
     opacity: 1;
   }
   100% {
@@ -383,8 +391,8 @@ export default {
 .opacity {
   -webkit-animation: opacity 10s infinite;
   animation: opacity 10s infinite;
-  -webkit-animation-delay: 10s;
-  animation-delay: 10s;
+  -webkit-animation-delay: 9s;
+  animation-delay: 9s;
 }
 @media screen and(min-width:750px) {
   .slider {
@@ -448,7 +456,7 @@ export default {
   }
   .indicators li {
     padding: 10px;
-    height: 33.3%;
+    height: 33.33%;
   }
   .item {
     height: 100%;
