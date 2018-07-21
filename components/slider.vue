@@ -410,14 +410,14 @@ export default {
     width: 15vw;
   }
   .mainDate {
-    font-size: 17px;
+    font-size: 18px;
   }
   .mainTitle {
-    font-size: 26px;
+    font-size: 30px;
     padding: 10px 30px 10px 30px;
   }
   .item .title {
-    font-size: 16px;
+    font-size: 18px;
     text-align: left;
   }
   .smallGradient {

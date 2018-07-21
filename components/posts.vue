@@ -131,7 +131,7 @@ button.active {
 }
 .img {
   width: 100%;
-  min-height: 70%;
+  min-height: 60%;
   background-size: cover;
   display: flex;
   background-position: 50% 50%;
@@ -236,7 +236,11 @@ ul.scroll {
     min-height: 200px;
   }
   .date {
-    margin: 15px 0 15px 0;
+    margin: 10px 0 5px 0;
+    font-size: 14px;
+  }
+  .title {
+    font-size: 16px;
   }
   ul.posts {
     height: 62.5vh;
