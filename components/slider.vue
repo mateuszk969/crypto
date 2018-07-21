@@ -76,7 +76,7 @@ export default {
       if (this.current > this.slides.length) {
         this.current = 0;
       }
-      setTimeout(() => (this.previous = this.playslides), this.timemout / 2);
+      setTimeout(() => (this.previous = this.playslides), 5000);
     }
   },
   mounted() {
@@ -251,8 +251,8 @@ export default {
 .slideInDown {
   -webkit-animation: slideInDown 10s infinite;
   animation: slideInDown 10s infinite;
-  -webkit-animation-delay: 9.5s;
-  animation-delay: 9.5s;
+  -webkit-animation-delay: 10s;
+  animation-delay: 10s;
 }
 
 #prev {
@@ -313,14 +313,17 @@ export default {
 .slideFromTop {
   -webkit-animation: slideFromTop 10s infinite;
   animation: slideFromTop 10s infinite;
-  -webkit-animation-delay: 9.5s;
-  animation-delay: 9.5s;
+  -webkit-animation-delay: 10s;
+  animation-delay: 10s;
 }
 
 @-webkit-keyframes timer {
   0% {
+    width: 100%;
   }
-
+  10% {
+    width: 100%;
+  }
   100% {
     width: 0;
   }
@@ -328,6 +331,10 @@ export default {
 
 @keyframes timer {
   0% {
+    width: 10vw;
+  }
+  10% {
+    width: 10vw;
   }
   100% {
     width: 0;
