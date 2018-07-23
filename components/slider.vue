@@ -84,23 +84,12 @@ export default {
     }
   },
   mounted() {
+    setInterval(this.selectSlide, this.timeout);
     if (this.$mq == "md" || this.$mq == "sm") {
       this.added = this.slides.pop();
     }
-    function msieversion() {
-      var ua = window.navigator.userAgent;
-      var msie = ua.indexOf("MSIE ");
-
-      if (msie > 0 || !!navigator.userAgent.match(/Trident.*rv\:11\./)) {
-      }
-      alert(parseInt(ua.substring(msie + 5, ua.indexOf(".", msie))));
-      return false;
-    }
-    msieversion();
   },
-  created() {
-    setInterval(this.selectSlide, this.timeout);
-  }
+  created() {}
 };
 </script>
 
