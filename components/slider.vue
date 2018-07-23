@@ -27,9 +27,9 @@
 						</div>
     </ul>
     <div class="container">
-    <ul class="indicators">
+    <ul class="indicators opacity">
       <li v-for="(slide,i) in slides" :key="i">
-        <div class="item opacity" :style="{backgroundImage: `url(${slide.thumbnail})`}">
+        <div class="item" :style="{backgroundImage: `url(${slide.thumbnail})`}">
           <div class="smallGradient">
 					<nuxt-link :to="slide._path">
             <p class="date">{{slide.date.substring(0,10)}} | {{slide.comment}} comments</p>
@@ -63,10 +63,6 @@ export default {
         this.added == 0
           ? this.slides.push(this.$store.getters.loadedPosts[3])
           : this.slides.push(this.added);
-        Array.from(document.getElementsByClassName("item")).forEach(el => {
-          el.classList.remove("opacity");
-          el.classList.add("opacity");
-        });
       }
       if ((this.$mq == "md" || this.$mq == "sm") & (this.slides.length == 3)) {
         this.added = this.slides.pop();
@@ -338,7 +334,7 @@ export default {
   15% {
     width: 100%;
   }
-  100% {
+  90% {
     width: 0;
   }
 }
@@ -350,7 +346,7 @@ export default {
   15% {
     width: 100%;
   }
-  100% {
+  90% {
     width: 0;
   }
 }
@@ -430,6 +426,9 @@ export default {
   .mainTitle {
     font-size: 30px;
     padding: 10px 30px 10px 30px;
+  }
+  .item {
+    border-radius: 5px;
   }
   .item .title {
     font-size: 18px;

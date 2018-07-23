@@ -8,11 +8,11 @@
        <img class="logo" src="@/assets/logo.png">
        <div class="fullMenu" :class="{mobileMenu:menu}">
        <ul class="menu" :class="{hidden:!menu}">
-           <li><nuxt-link to="/">Home </nuxt-link></li> 
-           <li><nuxt-link to="/education">Education</nuxt-link></li> 
-           <li><nuxt-link to="/events">Events</nuxt-link></li> 
-           <li><nuxt-link to="/quotation">Quotations</nuxt-link></li> 
-           <li><nuxt-link to="/aboutUs">About us</nuxt-link></li> 
+           <li><nuxt-link @click.native="disableMenu" to="/">Home </nuxt-link></li> 
+           <li><nuxt-link @click.native="disableMenu" to="/education">Education</nuxt-link></li> 
+           <li><nuxt-link @click.native="disableMenu" to="/events">Events</nuxt-link></li> 
+           <li><nuxt-link @click.native="disableMenu" to="/quotation">Quotations</nuxt-link></li> 
+           <li><nuxt-link @click.native="disableMenu" to="/aboutUs">About us</nuxt-link></li> 
        </ul>
          <ul class="login" :class="{hidden:!menu}">
            <li class="signIn"><nuxt-link to="/">Sign In </nuxt-link></li> 
@@ -36,7 +36,10 @@ export default {
   },
   methods: {
     toggleMenu() {
-      return (this.menu = !this.menu);
+      this.menu = !this.menu;
+    },
+    disableMenu() {
+      this.menu = false;
     }
   }
 };

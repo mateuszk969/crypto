@@ -1,6 +1,7 @@
 const pkg = require('./package');
 const fs = require('fs');
 
+
 module.exports = {
   mode: 'universal',
 
@@ -10,8 +11,9 @@ module.exports = {
   head: {
     title: pkg.name,
     meta: [{
-        charset: 'utf-8'
+        charset: 'utf-8',
       },
+
       {
         name: 'viewport',
         content: 'width=device-width, initial-scale=1'
@@ -73,11 +75,13 @@ module.exports = {
    */
   build: {
     babel: {
-      presets: ['es2015', 'stage-2']
+      presets: ['es2015', 'stage-2'],
+      plugins: ['transform-runtime']
     },
-    vendor: ['babel-polyfill',
+    vendor: ['babel-polyfill', 'eventsource-polyfill',
       'axios'
     ],
+
 
   },
 

@@ -129,7 +129,7 @@ button.active {
 }
 .img {
   width: 100%;
-  min-height: 60%;
+  flex: 1;
   background-size: cover;
   display: flex;
   background-position: 50% 50%;
@@ -200,7 +200,7 @@ li.post {
 }
 .date {
   color: #8e8e8e;
-  font-weight: bold;
+  font-weight: 500;
   font-size: 13px;
   margin: 10px 0 10px 0;
 }
@@ -261,24 +261,28 @@ ul.scroll {
   .posts {
     margin-top: 50px;
   }
-  @media screen and (min-width: 1366px) {
-    .headTitle {
-      position: initial;
-      text-align: left;
-    }
-    li.post {
-      flex-basis: 33.3%;
-      height: 30vh;
-    }
-    ul.posts {
-      height: 77.5vh;
-    }
-    .gradient {
-      height: 17.5vh;
-    }
-    .head {
-      flex-direction: row;
-    }
+  .img {
+    flex: 0;
+    min-height: 70%;
+  }
+}
+@media screen and (min-width: 1366px) {
+  .headTitle {
+    position: initial;
+    text-align: left;
+  }
+  li.post {
+    flex-basis: 33.3%;
+    height: 30vh;
+  }
+  ul.posts {
+    height: 77.5vh;
+  }
+  .gradient {
+    height: 17.5vh;
+  }
+  .head {
+    flex-direction: row;
   }
 }
 </style>

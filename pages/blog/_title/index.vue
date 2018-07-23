@@ -8,10 +8,10 @@
     </div>
     <div class="body" v-html="currentBody" /> 
       <ul class="gallery">
-        <li v-for="(item,index) in gallery" :key="index">
-          <img class="image" :src="item">
+        <li class="image" v-for="(item,index) in gallery" :key="index">
+          <img :src="item">
         </li>
-        <li class="instagram"></li>
+        <a href="https://www.instagram.com" target="_blank"></a><li class="image instagram"></li>
       </ul>
     <div class="disqus">
     <vue-disqus ref="disqus" v-bind:shortname="disqusShortname" :identifier="disqusId" :title="currentPost.title"></vue-disqus>
@@ -54,10 +54,23 @@ export default {
   padding: 20px;
   text-align: left;
 }
+.body >>> p {
+  padding: 5px 0 5px 0;
+}
+.body >>> h1,
+h2 {
+  padding: 10px 0 10px 0;
+}
+.body >>> img {
+  padding: 5px 0 5px 0;
+  max-width: 100%;
+}
 .mainImage {
   width: 100%;
   height: 50vh;
   margin: 0 auto;
+  background-size: cover;
+  background-position: 50% 50%;
 }
 .gradient {
   width: 100%;
@@ -96,9 +109,16 @@ export default {
   padding: 20px 10px 20px 10px;
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
+  flex-basis: 50%;
+  width: 100%;
 }
 .image {
-  flex: auto;
-  flex-basis: 100px;
+  width: 50%;
+  padding: 10px;
+}
+.image img {
+  width: 100%;
+  border-radius: 5px;
 }
 </style>
