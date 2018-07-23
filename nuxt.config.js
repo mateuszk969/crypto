@@ -73,21 +73,12 @@ module.exports = {
    */
   build: {
     babel: {
-      presets: [
-        'es2015',
-        'stage-2',
-      ],
-      plugins: [
-        'transform-runtime',
-      ]
+      presets: ['es2015', 'stage-2']
     },
     vendor: ['babel-polyfill',
       'axios'
     ],
 
-    extend(config, ctx) {
-
-    }
   },
 
   generate: {
