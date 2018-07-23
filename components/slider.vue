@@ -61,6 +61,10 @@ export default {
         this.added == 0
           ? this.slides.push(this.$store.getters.loadedPosts[3])
           : this.slides.push(this.added);
+        Array.from(document.getElementsByClassName("item")).forEach(el => {
+          el.classList.remove("opacity");
+          el.classList.add("opacity");
+        });
       }
       if ((this.$mq == "md" || this.$mq == "sm") & (this.slides.length == 3)) {
         this.added = this.slides.pop();
@@ -83,6 +87,16 @@ export default {
     if (this.$mq == "md" || this.$mq == "sm") {
       this.added = this.slides.pop();
     }
+    function msieversion() {
+      var ua = window.navigator.userAgent;
+      var msie = ua.indexOf("MSIE ");
+
+      if (msie > 0 || !!navigator.userAgent.match(/Trident.*rv\:11\./)) {
+      }
+      alert(parseInt(ua.substring(msie + 5, ua.indexOf(".", msie))));
+      return false;
+    }
+    msieversion();
   },
   created() {
     setInterval(this.selectSlide, this.timeout);

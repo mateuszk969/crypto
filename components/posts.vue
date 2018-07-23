@@ -72,14 +72,12 @@ export default {
       this.posts.sort((a, b) => {
         return a.comment < b.comment || -(a.comment > b.comment);
       });
-      console.log(this.posts);
     },
     sortedByDate() {
       this.newest = true;
       this.posts.sort((a, b) => {
         return a.date < b.date || -(a.date > b.date);
       });
-      console.log(this.posts);
     },
     showMore() {
       this.scroll = true;

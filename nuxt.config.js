@@ -73,19 +73,13 @@ module.exports = {
    */
   build: {
     babel: {
-      presets({
-        isServer
-      }) {
-        return [
-          ['vue-app', {
-            targets: isServer ? {
-              node: '8.0.0'
-            } : {
-              browsers: ['last 2 versions']
-            }
-          }]
-        ]
-      }
+      presets: [
+        'es2015',
+        'stage-2',
+      ],
+      plugins: [
+        'transform-runtime',
+      ]
     },
     vendor: ['babel-polyfill',
       'axios'
