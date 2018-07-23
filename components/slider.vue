@@ -8,7 +8,9 @@
                         <nuxt-link :to="playslides._path">
                             <p class="mainTitle">{{playslides.title}}</p>
                         </nuxt-link>
-                         <div id="bar" class="yellowBar timer"></div>
+                         <div id="bar">
+                           <div class="yellowBar timer"></div>
+                         </div>
                    </div>
                    </div>
 						</div>
@@ -207,12 +209,15 @@ export default {
   display: none;
 }
 
+#bar {
+  width: 30vw;
+  margin: 20px auto 20px auto;
+}
 .yellowBar {
+  width: 100%;
   height: 6px;
   border-radius: 17px;
   background-color: #ffff1f;
-  width: 30vw;
-  margin: 20px auto 20px auto;
 }
 
 @-webkit-keyframes slideInDown {
@@ -328,10 +333,10 @@ export default {
 
 @-webkit-keyframes timer {
   0% {
-    width: 10vw;
+    width: 100%;
   }
   15% {
-    width: 10vw;
+    width: 100%;
   }
   100% {
     width: 0;
@@ -340,10 +345,10 @@ export default {
 
 @keyframes timer {
   0% {
-    width: 10vw;
+    width: 100%;
   }
   15% {
-    width: 10vw;
+    width: 100%;
   }
   100% {
     width: 0;
@@ -351,8 +356,8 @@ export default {
 }
 
 .timer {
-  -webkit-animation: timer 10s infinite;
-  animation: timer 10s infinite;
+  -webkit-animation: timer 10s infinite linear;
+  animation: timer 10s infinite linear;
 }
 
 @keyframes opacity {
@@ -416,7 +421,7 @@ export default {
     position: absolute;
     top: 12.5vh;
   }
-  .yellowBar {
+  #bar {
     width: 15vw;
   }
   .mainDate {
@@ -486,7 +491,7 @@ export default {
   .title {
     max-width: 75%;
   }
-  .yellowBar {
+  #bar {
     width: 10vw;
     margin: 0;
   }
