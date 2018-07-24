@@ -2,30 +2,40 @@
   <article>
     <div class="mainImage" :style="{backgroundImage: `url(${currentPost.thumbnail})`}">
       <div class="gradient">
-         <div class="container">
+         <div class="container mainData">
            <p class="date">{{currentPost.date.substring(0,10)}} | {{currentPost.comment}} COMMENST</p>
            <h1 class="title">{{currentPost.title}}</h1>
+           <p class="category">Home / News / crypto / Trello {{currentPost.title}}</p>
         </div>
       </div>
     </div>
-    <div class="body container" v-html="currentBody" /> 
-      <ul class="gallery">
-        <li class="image" v-for="(item,index) in gallery" :key="index">
-          <img :src="item">
-        </li>
-      <li class="image instagram"> 
-         <a href="https://www.instagram.com" target="_blank">
-            <img src="@/assets/insta.jpg">
-         </a>
-       </li>
-      </ul>
-    <div class="disqus">
-    <vue-disqus ref="disqus" v-bind:shortname="disqusShortname" :identifier="disqusId" :title="currentPost.title"></vue-disqus>
-    </div>
+    <div class="row container">
+      <div class="left">
+        <div class="body " v-html="currentBody" /> 
+          <p class="heading">Gallery</p>
+           <ul class="gallery container">
+             <li class="image" v-for="(item,index) in gallery" :key="index">
+              <img :src="item">
+             </li>
+             <li class="image instagram"> 
+               <a href="https://www.instagram.com" target="_blank">
+                 <img src="@/assets/insta.jpg">
+               </a>
+             </li>
+          </ul>
+          <div class="disqus">
+           <vue-disqus ref="disqus" v-bind:shortname="disqusShortname" :identifier="disqusId" :title="currentPost.title"></vue-disqus>
+          </div>
+         </div>
+           <div class="right">
+             <lastPosts />
+           </div>
+        </div>
       </article>
 </template>
 
 <script>
+import lastPosts from "@/components/lastPosts";
 import { markdown } from "markdown";
 import Vue from "vue";
 import VueDisqus from "vue-disqus";
@@ -33,6 +43,9 @@ import VueDisqus from "vue-disqus";
 Vue.use(VueDisqus);
 
 export default {
+  components: {
+    lastPosts
+  },
   computed: {
     disqusId() {
       return `${this.disqusShortname}-${this.currentPost.title}`;
@@ -58,7 +71,7 @@ export default {
 </script>
 
 <style scoped>
-.body {
+.row {
   margin: 20px;
   text-align: left;
   background-color: white;
@@ -74,8 +87,12 @@ h2 {
   padding: 5px 0 5px 0;
   max-width: 100%;
 }
+.category {
+  display: none;
+}
 .mainImage {
   width: 100%;
+  min-height: 300px;
   height: 50vh;
   margin: 0 auto;
   background-size: cover;
@@ -111,13 +128,20 @@ h2 {
   font-size: 15px;
   font-weight: bold;
 }
+.heading {
+  margin-top: 30px;
+  font-size: 22px;
+  font-weight: bold;
+  color: #444654;
+}
 .disqus {
   width: 96%;
   margin: 0 auto;
+  margin-top: 15px;
 }
 .gallery {
   list-style: none;
-  padding: 20px 10px 20px 10px;
+  padding: 0;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -126,7 +150,8 @@ h2 {
 }
 .image {
   width: 50%;
-  padding: 10px;
+  padding: 10px 10px 10px 0;
+  margin: 0 auto;
 }
 .image img {
   width: 100%;
@@ -141,41 +166,96 @@ h2 {
   display: flex;
   justify-content: center;
   align-items: center;
+  border-radius: 5px;
 }
 .instagram img {
   width: auto;
   height: auto;
 }
 @media screen and (min-width: 750px) {
-  .mainImage {
-    height: 45vh;
-  }
-  .body {
+  .row {
     border-radius: 10px;
     margin-top: -40px;
     padding: 45px;
   }
-  .title {
-    margin-bottom: 50px;
+  .body >>> p {
+    font-size: 17px;
   }
-  .gallery {
-    padding: 0 55px 0 55px;
+  .mainImage {
+    height: 45vh;
+    min-height: 400px;
+  }
+  .title {
+    max-width: 70%;
+    padding-bottom: 25px;
+  }
+  .category {
+    display: block;
+    margin-bottom: 100px;
+    color: #828491;
+    font-weight: 600;
+  }
+  .heading {
+    margin: 30px 0 15px 0;
+    font-size: 25px;
   }
   .disqus {
     width: 100%;
-    padding: 30px 55px 0 55px;
+    margin-top: 25px;
   }
   .image {
     width: 33.3%;
   }
 }
 @media screen and (min-width: 1366px) {
-  .body {
+  .row {
     margin: 0 auto;
-    margin-top: -60px;
+    margin-top: -50px;
+    display: flex;
+    flex-direction: row;
+  }
+  .left {
+    width: 70%;
+    padding-right: 5%;
+  }
+  .right {
+    width: 30%;
   }
   .title {
     text-align: left;
+    padding-left: 0;
+  }
+  .mainImage {
+    height: 50vh;
+    width: 96%;
+    border-radius: 10px;
+  }
+  .gradient {
+    border-radius: 10px;
+  }
+  .gradient .mainData {
+    align-items: flex-start;
+    padding-left: 45px;
+  }
+  .category {
+    margin-bottom: 90px;
+  }
+  .date {
+    font-size: 14px;
+    padding: 10px 20px 10px 20px;
+  }
+  .title {
+    font-size: 30px;
+  }
+  .disqus {
+    margin-top: 40px;
+  }
+  .image {
+    width: 25%;
+    margin: 0;
+  }
+  .gallery.container {
+    height: auto;
   }
 }
 </style>
