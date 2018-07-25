@@ -2,20 +2,15 @@
     <div class="container">
             <p class="headTitle">News</p>
             <ul class="categories">
-                <li @click="filter = ''" :class="{active:filter==''}">all</li>
-                <li @click="filter = 'currencies'" :class="{active:filter=='currencies'}">Crypto Currencies</li>
-                <li @click="filter = 'law'" :class="{active:filter=='law'}">Law & Regulations</li>
-                <li @click="filter = 'wellness'" :class="{active:filter=='wellness'}">Wellness and More</li>
-                <li @click="filter = 'crypto'" :class="{active:filter=='crypto'}">Crypto Currencies</li>
-                <li @click="filter = 'regulations'" :class="{active:filter=='regulations'}">Law & Regulations</li>
+                <li :class="{active:filter==''}">all</li>
+                <li :class="{active:filter=='currencies'}">Crypto Currencies</li>
+                <li :class="{active:filter=='law'}">Law & Regulations</li>
+                <li :class="{active:filter=='wellness'}">Wellness and More</li>
+                <li :class="{active:filter=='crypto'}">Crypto Currencies</li>
+                <li :class="{active:filter=='regulations'}">Law & Regulations</li>
             </ul>
-            <paginate
-             name="sortedPosts"
-             :list="sortedPosts"
-             :per="6"
-            >
                 <ul class="postList">
-                    <li class="post" v-for="post in paginated('sortedPosts')"
+                    <li class="post" v-for="post in posts"
                         :key="post.date">
                             <div class="postCont">
                                 <nuxt-link :to="post._path">
@@ -30,35 +25,53 @@
                            </div>
                     </li>
                 </ul>
-            </paginate>
-            <paginate-links for="sortedPosts" 
-            :async="true" 
-            :limit="6" 
-            :show-step-links="true"
-             @change="scrollTop"
-            :hide-single-page="true"
-             />
+                <div v-if="page_number>1" class="prev"><nuxt-link :to="prev">prev</nuxt-link></div>
+                <div v-if="page_number>2" class="first"><nuxt-link :to="prev">1</nuxt-link></div>
+                <div class="current">{{page_number}}</div>
+                <div v-if="allPages>page_number" class="last"><nuxt-link :to="prev">{{allPages}}</nuxt-link></div>
+                <div v-if="allPages>page_number" class="next"><nuxt-link :to="next">next</nuxt-link></div>
       </div>
 </template>
 
 <script>
 import Vue from "vue";
-import VuePaginate from "vue-paginate";
-Vue.use(VuePaginate);
 
 export default {
   data() {
     return {
-      posts: this.$store.getters.loadedPosts,
-      paginate: ["sortedPosts"],
-      filter: ""
+      page_number: this.$route.params.page_number,
+      category: this.$route.params.category
     };
   },
   computed: {
-    sortedPosts() {
-      return this.posts.filter(el => {
-        return el.category.indexOf(this.filter) != -1;
-      });
+    posts() {
+      return this.$store.getters.loadedPosts
+        .filter(el => {
+          return this.category == "all" ? el : el.category == this.category;
+        })
+        .slice(
+          this.page_number == "1"
+            ? 0
+            : (parseInt(this.page_number) - 1) * 12 - 1,
+          12
+        );
+    },
+    allPages() {
+      return Math.ceil(
+        this.$store.getters.loadedPosts.filter(el => {
+          return this.category == "all" ? el : el.category == this.category;
+        }).length / 12
+      );
+    },
+    prev() {
+      return `/news/${this.category}/${(
+        parseInt(this.page_number) - 1
+      ).toString()}`;
+    },
+    next() {
+      return `/news/${this.category}/${(
+        parseInt(this.page_number) + 1
+      ).toString()}`;
     }
   },
   methods: {
