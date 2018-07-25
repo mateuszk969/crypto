@@ -79,6 +79,7 @@ ul {
   flex-direction: row;
   list-style: none;
   justify-content: center;
+  flex-wrap: wrap;
 }
 .categories li {
   padding: 0 15px 0 15px;
