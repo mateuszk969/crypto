@@ -9,7 +9,7 @@
        <div class="fullMenu" :class="{mobileMenu:menu}">
        <ul class="menu" :class="{hidden:!menu}">
            <li><nuxt-link @click.native="disableMenu" to="/">Home </nuxt-link></li> 
-           <li><nuxt-link @click.native="disableMenu" to="/education">Education</nuxt-link></li> 
+           <li><nuxt-link @click.native="disableMenu" to="/news">Education</nuxt-link></li> 
            <li><nuxt-link @click.native="disableMenu" to="/events">Events</nuxt-link></li> 
            <li><nuxt-link @click.native="disableMenu" to="/quotation">Quotations</nuxt-link></li> 
            <li><nuxt-link @click.native="disableMenu" to="/aboutUs">About us</nuxt-link></li> 

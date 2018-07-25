@@ -103,6 +103,7 @@ li.post {
   flex-basis: 100%;
   height: 37vh;
   min-height: 200px;
+  max-height: 250px;
 }
 .postCont {
   padding: 15px 0 15px 0;
@@ -133,9 +134,6 @@ li.post {
   text-decoration: none;
   color: black;
 }
-ul.scroll {
-  overflow: auto;
-}
 .showMore {
   color: white;
   background-color: #2b7ffb;
@@ -146,10 +144,6 @@ ul.scroll {
   width: 96%;
   margin: 0 auto;
   margin-top: 10px;
-}
-.noPosts {
-  position: static;
-  align-items: flex-start;
 }
 @media screen and (min-width: 750px) {
   .postCont {

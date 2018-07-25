@@ -174,14 +174,16 @@ ul.posts {
   flex-direction: row;
   list-style: none;
   padding: 0;
-  max-height: 93vh;
+  height: 93vh;
   overflow: hidden;
   min-height: 500px;
+  max-height: 625px;
 }
 li.post {
   flex-basis: 100%;
   height: 37vh;
   min-height: 200px;
+  max-height: 250px;
 }
 .postCont {
   padding: 15px;
@@ -190,6 +192,7 @@ li.post {
 .gradient {
   height: 19vh;
   min-height: 100px;
+  max-height: 125px;
   width: 100%;
   background-color: rgba(255, 255, 255, 0.8);
   position: absolute;
