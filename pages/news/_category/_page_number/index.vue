@@ -1,14 +1,7 @@
 <template>
     <div class="container">
             <p class="headTitle">News</p>
-            <ul class="categories">
-                <li :class="{active:filter==''}">all</li>
-                <li :class="{active:filter=='currencies'}">Crypto Currencies</li>
-                <li :class="{active:filter=='law'}">Law & Regulations</li>
-                <li :class="{active:filter=='wellness'}">Wellness and More</li>
-                <li :class="{active:filter=='crypto'}">Crypto Currencies</li>
-                <li :class="{active:filter=='regulations'}">Law & Regulations</li>
-            </ul>
+
                 <ul class="postList">
                     <li class="post" v-for="post in posts"
                         :key="post.date">

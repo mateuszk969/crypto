@@ -65,7 +65,6 @@ module.exports = {
         lg: Infinity,
       }
     }],
-    "nuxt-netlify-cms"
   ],
 
   /*
@@ -104,7 +103,7 @@ module.exports = {
         }
       };
       const posts = response.map((el) => {
-        return `blog/${el.substring(0,el.length-5)}`
+        return `blog/${encodeURI(el.substring(0,el.length-5))}`
       });
       return [...posts, ...news]
     }
