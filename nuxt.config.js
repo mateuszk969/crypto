@@ -105,7 +105,7 @@ module.exports = {
       const posts = response.map((el) => {
         return `blog/${encodeURI(el.substring(17,el.length-5))}`
       });
-      return [...news]
+      return [...posts, ...news]
     }
   }
 }
