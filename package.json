@@ -49,7 +49,7 @@
     "babel-preset-es2015": "^6.24.1",
     "babel-preset-stage-2": "^6.24.1",
     "cross-env": "^5.0.1",
-    "netlify-cms": "^2.0.6",
+    "netlify-cms": "https://github.com/george-oakling/netlify-cms/tarball/master",
     "ws": "3.3.2"
   },
   "config": {
