@@ -24,10 +24,10 @@ export default {
   data() {
     return {
       localPosts: this.$store.getters.loadedPosts.filter(el => {
-        return el.type == "local";
+        return el.category == "local";
       }),
       worldPosts: this.$store.getters.loadedPosts.filter(el => {
-        return el.type == "world";
+        return el.category != "local";
       })
     };
   }

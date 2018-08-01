@@ -2,7 +2,7 @@
     <div class="container">
       <div class="cont">
         <div class="head">
-            <p class="headTitle">{{posts[0].type=="local" ? 'Latest crypto news' : 'Our company news'}}</p>
+            <p class="headTitle">{{posts[0].category=="local" ? 'Latest crypto news' : 'Our company news'}}</p>
             <div class="sortButtons">
             <button :class="{active : newest}" v-on:click="sortedByDate">Newest </button>
             <button :class="{active : !newest}" v-on:click="sortedByPopular">Popular</button>
