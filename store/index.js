@@ -17,9 +17,10 @@ const createStore = () => {
     actions: {
       async nuxtServerInit(vuexContext, context) {
         const response = await require.context('~/content/blog/posts/', false, /\.json$/);
+        console.log(response.keys());
         const posts = await response.keys().map(key => ({
           ...response(key),
-          _path: `/blog/${encodeURI(key.slice(2,key.length-5))}`
+          _path: `/blog/${encodeURI(key.slice(19,key.length-5))}`
         })).sort((a, b) => {
           return a.date < b.date;
         });
