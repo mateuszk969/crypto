@@ -82,4 +82,30 @@ module.exports = {
 
   },
 
+  generate: {
+    routes() {
+      const response = fs.readdirSync('content/blog/posts/');
+      let page_numbers = {
+        all: response.length
+      };
+      let news = [];
+      let categories = response.map(el => {
+        return require(`./content/blog/posts/${el}`)
+      }).map(el => {
+        return el.category
+      }).forEach(el => {
+        page_numbers[el] = (page_numbers[el] || 0) + 1;
+      })
+      for (const prop in page_numbers) {
+        if (page_numbers.hasOwnProperty(prop)) {
+          for (let i = 0; i < page_numbers[prop]; i += 12)
+            news.push(`news/${prop}/${(i/12)+1}`)
+        }
+      };
+      const posts = response.map((el) => {
+        return `blog/${encodeURI(el.substring(17,el.length-5))}`
+      });
+      return [...news]
+    }
+  }
 }
