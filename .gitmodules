@@ -1,0 +1,4 @@
+[submodule "src"]
+	path = src
+	url = https://github.com/mateuszk969/crypto.git
+	branch = master
