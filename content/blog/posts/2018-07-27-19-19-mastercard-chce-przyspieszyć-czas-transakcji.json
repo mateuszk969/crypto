@@ -1,8 +1,0 @@
-{
-  "category": "crypto",
-  "title": "MasterCard skróci czas transakcji ",
-  "date": "2018-07-18T19:19:00+02:00",
-  "thumbnail": "/source/crypto.jpg",
-  "body": "MasterCard, gigant świadczący globalne usługi finansowe, uzyskał patent Urzędu Patentów i Znaków Towarowych Stanów Zjednoczonych (USPTO), dotyczący metody łączenia aktywów kryptograficznych typu blockchain z kontami walut fiducjarnych. Firma wskazuje, że ich celem jest przyspieszenie transakcji z użyciem kryptowalut oraz zminimalizowanie potencjalnych oszustw w sieci.\r\n\nSzczególny cel MasterCard - przyspieszenie transakcji handlowych wykorzystujących kryptowaluty - opisano w złożonym przez firmę dokumencie patentowym. Opisuje problemy, z którymi borykają się obecnie kupujący/sprzedający towary za pomocą walut cyfrowych, tj. m.in. długi czas potwierdzenia transakcji. Tradycyjne transakcje płatnicze są realizowane w parę sekund i tego samego oczekują konsumenci w sektorze kryptowalut.",
-  "gallery": "Firma twierdzi, iż patent rozwiąże problemy techniczne w autoryzowaniu transakcji i przyspieszy implementację transakcji kryptowalutowych na całym świecie. Rozwiązaniem Mastercard jest zbudowanie systemu, który zarządza \"rezerwą cząstkową waluty utworzonej na blockchainie\", wskazuje portal bithub.pl dodając, że bankowość rezerwy cząstkowej wymaga posiadania tylko części swoich aktywów w tym samym czasie, a reszta środków jest zazwyczaj pożyczana lub inwestowana."
-}
